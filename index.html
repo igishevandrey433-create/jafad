@@ -482,7 +482,23 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 </footer>
 
 <script>
-// ===== КУРС ЮАНЯ =====
+// ===== TELEGRAM BOT =====
+var TG_TOKEN = '8639881516:AAEYtImyWHuuAEe2qDGu1HanKs7Fu3S6xrA';
+var TG_CHAT = '8639881516';
+
+function sendToTelegram(msg, onSuccess) {
+  fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({chat_id: TG_CHAT, text: msg, parse_mode: 'HTML'})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if(d.ok){ onSuccess(); }
+    else { alert('Ошибка отправки. Попробуйте ещё раз.'); }
+  })
+  .catch(function(){ alert('Нет соединения. Проверьте интернет.'); });
+}
 var CNY_RATE = 11.54;
 
 function fetchRate() {
@@ -616,7 +632,14 @@ function removeFromCart(i) {
 }
 
 function toggleCart() {
-  document.getElementById('cart-panel').classList.toggle('open');
+  var panel = document.getElementById('cart-panel');
+  var isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open');
+  if(!isOpen){
+    setTimeout(function(){
+      panel.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  }
 }
 
 function sendCartOrder() {
@@ -626,21 +649,34 @@ function sendCartOrder() {
   var pvz = document.getElementById('global-pvz').value.trim();
   if(!name){ alert('Введите ваше имя вверху страницы!'); document.getElementById('global-name').focus(); return; }
   var totalOrder = cart.reduce(function(s,i){ return s + (i.totalPrice||0); }, 0);
-  var msg = '🛒 Новый заказ JaFAD!\n\n👤 Имя: ' + name;
+  var msg = '🛒 <b>Новый заказ JaFAD!</b>\n\n👤 Имя: <b>' + name + '</b>';
   if(city) msg += '\n📍 Город: ' + city;
   if(pvz) msg += '\n📦 Пункт выдачи: ' + pvz;
   msg += '\n\n━━━━━━━━━━━━━━━━\n';
   cart.forEach(function(item, i){
-    msg += '\n' + (i+1) + '. ' + item.cat + ': ' + item.model;
-    msg += '\n   Цвет: ' + item.color + ' · Размер: ' + item.size;
-    if(item.cny) msg += '\n   Цена Poizon: ' + item.cny + ' ¥ → ' + item.rubPrice.toLocaleString('ru-RU') + ' ₽ → Итого: ' + item.totalPrice.toLocaleString('ru-RU') + ' ₽';
-    if(item.link) msg += '\n   Ссылка: ' + item.link;
-    if(item.comment) msg += '\n   Комментарий: ' + item.comment;
+    msg += '\n' + (i+1) + '. <b>' + item.cat + ': ' + item.model + '</b>';
+    msg += '\n   🎨 Цвет: ' + item.color + ' · 📐 Размер: ' + item.size;
+    if(item.cny) msg += '\n   💰 ' + item.cny + ' ¥ → ' + item.rubPrice.toLocaleString('ru-RU') + ' ₽ → <b>Итого: ' + item.totalPrice.toLocaleString('ru-RU') + ' ₽</b>';
+    if(item.link) msg += '\n   🔗 ' + item.link;
+    if(item.comment) msg += '\n   💬 ' + item.comment;
     msg += '\n';
   });
-  msg += '\n━━━━━━━━━━━━━━━━\nВсего товаров: ' + cart.length;
-  if(totalOrder > 0) msg += '\nОбщая сумма: ' + totalOrder.toLocaleString('ru-RU') + ' ₽ (без доставки)';
-  window.open('https://t.me/AndreyI2009?text=' + encodeURIComponent(msg), '_blank');
+  msg += '\n━━━━━━━━━━━━━━━━\n📦 Всего товаров: <b>' + cart.length + '</b>';
+  if(totalOrder > 0) msg += '\n💵 Общая сумма: <b>' + totalOrder.toLocaleString('ru-RU') + ' ₽</b> (без доставки)';
+
+  var btn = document.querySelector('.cart-send-btn');
+  if(btn){ btn.textContent = '⏳ Отправляем...'; btn.disabled = true; }
+
+  sendToTelegram(msg, function(){
+    cart = [];
+    updateCartUI();
+    document.getElementById('cart-panel').classList.remove('open');
+    var ok = document.createElement('div');
+    ok.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0a2a1a;border:2px solid #00FEFF;border-radius:16px;padding:32px 40px;text-align:center;z-index:9999;';
+    ok.innerHTML = '<div style="font-size:40px;margin-bottom:12px;">✅</div><div style="font-size:18px;font-weight:900;color:#00FEFF;">Заказ отправлен!</div><div style="font-size:14px;color:#555;margin-top:8px;">Мы свяжемся с вами в Telegram</div>';
+    document.body.appendChild(ok);
+    setTimeout(function(){ document.body.removeChild(ok); }, 3000);
+  });
 }
 
 // ===== ДОСТАВКА =====
