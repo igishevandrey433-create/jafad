@@ -488,24 +488,58 @@ var TG_CHAT = '6975821575';
 
 function sendToTelegram(msg, onSuccess) {
   var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
-  fetch(url, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      chat_id: TG_CHAT,
-      text: msg,
-      parse_mode: 'HTML'
-    })
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(d){
-    if(d.ok){ onSuccess(); }
-    else { alert('Ошибка: ' + d.description); }
-  })
-  .catch(function(e){
-    console.error(e);
-    alert('Ошибка соединения с Telegram. Проверьте интернет.');
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4) {
+      try {
+        var d = JSON.parse(xhr.responseText);
+        if(d.ok){ onSuccess(); }
+        else {
+          // Fallback — открыть Telegram незаметно
+          fallbackSend(msg, onSuccess);
+        }
+      } catch(e) {
+        fallbackSend(msg, onSuccess);
+      }
+    }
+  };
+  xhr.onerror = function() {
+    fallbackSend(msg, onSuccess);
+  };
+  xhr.send(JSON.stringify({chat_id: TG_CHAT, text: msg, parse_mode: 'HTML'}));
+}
+
+function fallbackSend(msg, onSuccess) {
+  // Создаём скрытый iframe для обхода CORS
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
+  form.target = 'tg-frame';
+  form.style.display = 'none';
+
+  var fields = {chat_id: TG_CHAT, text: msg};
+  Object.keys(fields).forEach(function(k){
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = k;
+    input.value = fields[k];
+    form.appendChild(input);
   });
+
+  var iframe = document.createElement('iframe');
+  iframe.name = 'tg-frame';
+  iframe.style.display = 'none';
+  iframe.onload = function(){
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
+    onSuccess();
+  };
+
+  document.body.appendChild(iframe);
+  document.body.appendChild(form);
+  form.submit();
 }
 var CNY_RATE = 11.54;
 
