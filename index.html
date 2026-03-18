@@ -483,21 +483,29 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 
 <script>
 // ===== TELEGRAM BOT =====
-var TG_TOKEN = window.TG_TOKEN || '';
-var TG_CHAT = window.TG_CHAT || '6975821575';
+var TG_TOKEN = '8639881516:AAF6IT_2kI2XvYf8h8NGhb__QkDie9Ghhpc';
+var TG_CHAT = '6975821575';
 
 function sendToTelegram(msg, onSuccess) {
-  fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+  var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage';
+  fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({chat_id: TG_CHAT, text: msg, parse_mode: 'HTML'})
+    body: JSON.stringify({
+      chat_id: TG_CHAT,
+      text: msg,
+      parse_mode: 'HTML'
+    })
   })
   .then(function(r){ return r.json(); })
   .then(function(d){
     if(d.ok){ onSuccess(); }
-    else { alert('Ошибка отправки. Попробуйте ещё раз.'); }
+    else { alert('Ошибка: ' + d.description); }
   })
-  .catch(function(){ alert('Нет соединения. Проверьте интернет.'); });
+  .catch(function(e){
+    console.error(e);
+    alert('Ошибка соединения с Telegram. Проверьте интернет.');
+  });
 }
 var CNY_RATE = 11.54;
 
