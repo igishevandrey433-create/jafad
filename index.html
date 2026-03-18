@@ -182,8 +182,8 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   <div class="section-tag">КОНТАКТЫ</div>
   <div class="section-title">Связаться с нами</div>
   <div class="contact-btns">
-    <a href="https://t.me/ВАШ_TELEGRAM" class="tg-btn">Написать в Telegram</a>
-    <a href="https://wa.me/ВАШТЕЛЕФОН" class="wa-btn">WhatsApp</a>
+    <a href="https://t.me/AndreyI2009" class="tg-btn">Написать в Telegram</a>
+    <a href="https://t.me/AndreyI2009" class="wa-btn">Написать нам</a>
   </div>
 </div>
 
@@ -212,7 +212,7 @@ function buildCard(p,selColor,selSize){
     <div class="card-sizes">${p.sizes.map(s=>`<button class="size-btn${p.na.includes(s)?' na':''}${s===selSize?' active':''}" data-size="${s}"${p.na.includes(s)?' disabled':''}>${s}</button>`).join('')}</div>
     <div class="card-footer">
       <div class="card-price">${p.prices[selColor].toLocaleString()} ₽<span>Poizon</span></div>
-      <a href="https://t.me/ВАШ_TELEGRAM?text=Хочу заказать ${encodeURIComponent(p.name+' '+selColor+(selSize?' р.'+selSize:''))}" class="order-btn">Заказать</a>
+      <a href="https://t.me/AndreyI2009?text=Хочу заказать ${encodeURIComponent(p.name+' '+selColor+(selSize?' р.'+selSize:''))}" class="order-btn">Заказать</a>
     </div>
   </div>`;
 }
