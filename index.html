@@ -35,22 +35,46 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .rate-dot{width:7px;height:7px;border-radius:50%;background:#00FEFF;animation:pulse 2s infinite;}
 .rate-text{font-size:12px;color:#00FEFF;font-weight:700;}
 
-/* CART */
-.cart-panel{display:none;background:#111;border-bottom:2px solid #00FEFF33;padding:24px 40px;}
-.cart-panel.open{display:block;}
-.cart-title{font-size:16px;font-weight:700;margin-bottom:16px;}
-.cart-title span{color:#00FEFF;}
-.cart-empty{color:#555;font-size:14px;padding:20px 0;}
-.cart-items{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
-.cart-item{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.cart-item-info{flex:1;}
-.cart-item-cat{font-size:10px;letter-spacing:2px;color:#00FEFF;margin-bottom:2px;}
-.cart-item-name{font-size:14px;font-weight:700;}
-.cart-item-details{font-size:12px;color:#666;margin-top:2px;}
-.cart-item-remove{background:transparent;border:1px solid #333;border-radius:8px;color:#666;padding:6px 12px;cursor:pointer;font-size:12px;transition:all .15s;}
-.cart-item-remove:hover{border-color:#e74c3c;color:#e74c3c;}
-.cart-send-btn{background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:16px 32px;font-size:15px;font-weight:900;cursor:pointer;transition:background .2s;}
-.cart-send-btn:hover{background:#00E5E6;}
+/* CART FULLSCREEN */
+.cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d0d;z-index:999;overflow-y:auto;}
+.cart-overlay.open{display:block;}
+.cart-inner{max-width:680px;margin:0 auto;padding:24px 20px 60px;}
+.cart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #1e1e1e;}
+.cart-header-title{font-size:22px;font-weight:900;}
+.cart-header-title span{color:#00FEFF;}
+.cart-close{background:#1a1a1a;border:1px solid #2a2a2a;color:#aaa;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.cart-close:hover{border-color:#e74c3c;color:#e74c3c;}
+.cart-empty-full{text-align:center;padding:60px 20px;color:#555;}
+.cart-empty-full div{font-size:48px;margin-bottom:16px;}
+.cart-empty-full p{font-size:16px;}
+.cart-items-full{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+.cart-item-full{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px;}
+.cart-item-num{font-size:20px;font-weight:900;color:#1e1e1e;min-width:32px;}
+.cart-item-body{flex:1;}
+.cart-item-cat-full{font-size:10px;letter-spacing:2px;color:#00FEFF;margin-bottom:3px;}
+.cart-item-name-full{font-size:15px;font-weight:700;margin-bottom:4px;}
+.cart-item-meta{font-size:12px;color:#666;}
+.cart-item-price-full{font-size:16px;font-weight:900;color:#00FEFF;white-space:nowrap;}
+.cart-item-del{background:transparent;border:1px solid #2a2a2a;color:#555;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
+.cart-item-del:hover{border-color:#e74c3c;color:#e74c3c;}
+.cart-total-bar{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+.cart-total-label{font-size:14px;color:#888;}
+.cart-total-sum{font-size:24px;font-weight:900;color:#00FEFF;}
+
+/* DELIVERY FORM IN CART */
+.delivery-form{background:#111;border:1px solid #1e1e1e;border-radius:16px;padding:24px;margin-bottom:24px;}
+.delivery-form-title{font-size:12px;letter-spacing:3px;color:#00FEFF;margin-bottom:16px;}
+.delivery-field{margin-bottom:14px;}
+.delivery-field label{font-size:11px;letter-spacing:2px;color:#555;display:block;margin-bottom:6px;}
+.delivery-field input{width:100%;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:12px 14px;color:#fff;font-size:14px;outline:none;font-family:Arial,sans-serif;transition:border-color .2s;}
+.delivery-field input:focus{border-color:#00FEFF;}
+.pvz-find-btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+.pvz-find-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;border:1px solid #2a2a2a;color:#888;text-decoration:none;font-size:12px;font-weight:700;transition:all .2s;flex:1;justify-content:center;}
+.pvz-find-btn.active{border-color:#00FEFF;color:#00FEFF;}
+
+.cart-send-full{width:100%;background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:18px;font-size:16px;font-weight:900;cursor:pointer;transition:background .2s;}
+.cart-send-full:hover{background:#00E5E6;}
+.cart-send-full:disabled{background:#1a2a2a;color:#555;cursor:not-allowed;}
 
 /* HERO */
 .hero{background:#111;padding:60px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
@@ -234,6 +258,10 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
     <a href="#contacts">Контакты</a>
   </div>
   <div class="nav-right">
+    <div class="rate-badge" style="margin:0;">
+      <span class="rate-dot"></span>
+      <span class="rate-text" id="rate-badge">¥...</span>
+    </div>
     <button class="cart-btn" onclick="toggleCart()">
       🛒 Корзина
       <span class="cart-count" id="cart-count">0</span>
@@ -242,29 +270,38 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
   </div>
 </nav>
 
-<!-- DELIVERY BAR -->
-<div class="delivery-bar">
-  <div class="delivery-label">📍 АДРЕС ДОСТАВКИ — ПРИМЕНЯЕТСЯ КО ВСЕМ ТОВАРАМ</div>
-  <div class="delivery-inputs">
-    <input type="text" id="global-name" placeholder="Ваше имя..."/>
-    <input type="text" id="global-city" placeholder="Ваш город..." oninput="updateGlobalPVZ()"/>
-  </div>
-  <div class="pvz-btns">
-    <a id="global-cdek" href="https://www.cdek.ru/ru/offices/" target="_blank" class="pvz-btn">📦 Найти пункт СДЭК</a>
-    <a id="global-boxberry" href="https://boxberry.ru/find_a_point/" target="_blank" class="pvz-btn">📫 Найти пункт Boxberry</a>
-  </div>
-  <input type="text" id="global-pvz" class="delivery-pvz" placeholder="Адрес пункта выдачи (вставьте после выбора)..."/>
-  <div style="font-size:11px;color:#555;margin-top:6px;">💡 Заполните один раз — применится ко всем товарам в корзине</div>
-  <div class="rate-badge">
-    <span class="rate-dot"></span>
-    <span class="rate-text" id="rate-badge">Загружаем курс ¥...</span>
-  </div>
-</div>
+<!-- CART FULLSCREEN -->
+<div class="cart-overlay" id="cart-overlay">
+  <div class="cart-inner">
+    <div class="cart-header">
+      <div class="cart-header-title">🛒 Корзина <span id="cart-title-count"></span></div>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
 
-<!-- CART -->
-<div class="cart-panel" id="cart-panel">
-  <div class="cart-title">🛒 Корзина <span id="cart-title-count"></span></div>
-  <div id="cart-body"><div class="cart-empty">Корзина пуста — добавьте товары ниже</div></div>
+    <div id="cart-body"></div>
+
+    <!-- DELIVERY FORM -->
+    <div class="delivery-form" id="delivery-form" style="display:none;">
+      <div class="delivery-form-title">📍 АДРЕС ДОСТАВКИ</div>
+      <div class="delivery-field">
+        <label>ВАШЕ ИМЯ</label>
+        <input type="text" id="global-name" placeholder="Как вас зовут?"/>
+      </div>
+      <div class="delivery-field">
+        <label>ГОРОД</label>
+        <input type="text" id="global-city" placeholder="Введите ваш город..." oninput="updateGlobalPVZ()"/>
+        <div class="pvz-find-btns">
+          <a id="global-cdek" href="https://www.cdek.ru/ru/offices/" target="_blank" class="pvz-find-btn">📦 СДЭК</a>
+          <a id="global-boxberry" href="https://boxberry.ru/find_a_point/" target="_blank" class="pvz-find-btn">📫 Boxberry</a>
+        </div>
+      </div>
+      <div class="delivery-field">
+        <label>АДРЕС ПУНКТА ВЫДАЧИ</label>
+        <input type="text" id="global-pvz" placeholder="Вставьте адрес после выбора пункта..."/>
+      </div>
+      <button class="cart-send-full" id="cart-send-btn" onclick="sendCartOrder()">📨 Отправить заказ</button>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -621,67 +658,79 @@ function updateCartUI() {
   var el = document.getElementById('cart-count');
   el.textContent = count;
   el.className = 'cart-count' + (count > 0 ? ' visible' : '');
-  var total = cart.reduce(function(s,i){ return s + (i.totalPrice||0); }, 0);
-  document.getElementById('cart-title-count').textContent = count > 0 ? '(' + count + ' тов. · ' + total.toLocaleString('ru-RU') + ' ₽)' : '';
+  var total = cart.reduce(function(s,i){ return s+(i.totalPrice||0); },0);
+  document.getElementById('cart-title-count').textContent = count > 0 ? '('+count+' тов.)' : '';
+
   var body = document.getElementById('cart-body');
-  if(count === 0){ body.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте товары ниже</div>'; return; }
-  var html = '<div class="cart-items">';
-  cart.forEach(function(item, i){
-    html += '<div class="cart-item"><div class="cart-item-info">';
-    html += '<div class="cart-item-cat">' + item.cat + '</div>';
-    html += '<div class="cart-item-name">' + item.model + '</div>';
-    html += '<div class="cart-item-details">Цвет: ' + item.color + ' · Размер: ' + item.size;
-    if(item.totalPrice) html += ' · <span style="color:#00FEFF;font-weight:700;">' + item.totalPrice.toLocaleString('ru-RU') + ' ₽</span>';
+  var deliveryForm = document.getElementById('delivery-form');
+
+  if(count === 0){
+    body.innerHTML = '<div class="cart-empty-full"><div>🛒</div><p>Корзина пуста — добавьте товары</p></div>';
+    if(deliveryForm) deliveryForm.style.display = 'none';
+    return;
+  }
+
+  var html = '<div class="cart-items-full">';
+  cart.forEach(function(item,i){
+    html += '<div class="cart-item-full">';
+    html += '<div class="cart-item-num">'+(i+1)+'</div>';
+    html += '<div class="cart-item-body">';
+    html += '<div class="cart-item-cat-full">'+item.cat+'</div>';
+    html += '<div class="cart-item-name-full">'+item.model+'</div>';
+    html += '<div class="cart-item-meta">🎨 '+item.color+' · 📐 '+item.size;
+    if(item.link) html += ' · <a href="'+item.link+'" target="_blank" style="color:#00FEFF;">Ссылка</a>';
     html += '</div>';
-    if(item.comment) html += '<div class="cart-item-details" style="color:#555;">💬 ' + item.comment + '</div>';
-    html += '</div><button class="cart-item-remove" onclick="removeFromCart(' + i + ')">✕ Удалить</button></div>';
+    if(item.comment) html += '<div class="cart-item-meta" style="color:#555;margin-top:2px;">💬 '+item.comment+'</div>';
+    html += '</div>';
+    if(item.totalPrice) html += '<div class="cart-item-price-full">'+item.totalPrice.toLocaleString('ru-RU')+' ₽</div>';
+    html += '<button class="cart-item-del" onclick="removeFromCart('+i+')">✕</button>';
+    html += '</div>';
   });
-  html += '</div><button class="cart-send-btn" onclick="sendCartOrder()">📨 Отправить весь заказ в Telegram (' + count + ' тов.)</button>';
+  html += '</div>';
+  html += '<div class="cart-total-bar"><span class="cart-total-label">Итого (без доставки):</span><span class="cart-total-sum">'+total.toLocaleString('ru-RU')+' ₽</span></div>';
   body.innerHTML = html;
+  if(deliveryForm) deliveryForm.style.display = 'block';
+}
+
+function toggleCart() {
+  var overlay = document.getElementById('cart-overlay');
+  var isOpen = overlay.classList.contains('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+  if(!isOpen) window.scrollTo(0,0);
+}
+
+function removeFromCart(i) {
+  cart.splice(i,1);
+  updateCartUI();
 }
 
 function addToCart(id) {
   var p = CATALOG[id];
   if(!p) return;
-  var selEl = document.getElementById(id + '-model');
+  var selEl = document.getElementById(id+'-model');
   var sel = selEl ? selEl.value : '';
-  var customEl = document.getElementById(id + '-custom-input');
+  var customEl = document.getElementById(id+'-custom-input');
   var custom = customEl ? customEl.value : '';
-  var model = sel === 'custom' ? (custom || '') : sel;
-  var linkEl = document.getElementById(id + '-link');
+  var model = sel==='custom'?(custom||''):sel;
+  var linkEl = document.getElementById(id+'-link');
   var link = linkEl ? linkEl.value : '';
-  var commentEl = document.getElementById(id + '-comment');
+  var commentEl = document.getElementById(id+'-comment');
   var comment = commentEl ? commentEl.value : '';
-  var sizeEl = document.querySelector('#' + id + ' .sz.active');
+  var sizeEl = document.querySelector('#'+id+' .sz.active');
   var size = sizeEl ? sizeEl.dataset.size : 'не выбран';
-  var colorEl = document.querySelector('#' + id + ' .col-btn.active');
+  var colorEl = document.querySelector('#'+id+' .col-btn.active');
   var color = colorEl ? colorEl.dataset.color : 'не выбран';
-  var cnyEl = document.getElementById(id + '-cny');
-  var cny = cnyEl ? (parseFloat(cnyEl.value) || 0) : 0;
-  var rubPrice = cny > 0 ? Math.round(cny * CNY_RATE) : 0;
-  var totalPrice = rubPrice > 0 ? Math.round(rubPrice * 1.10) : 0;
-  if(!model) { alert('Выберите или введите модель!'); return; }
-  cart.push({cat:p.label, model:model, color:color, size:size, link:link, comment:comment, cny:cny, rubPrice:rubPrice, totalPrice:totalPrice});
+  var cnyEl = document.getElementById(id+'-cny');
+  var cny = cnyEl ? (parseFloat(cnyEl.value)||0) : 0;
+  var rubPrice = cny>0 ? Math.round(cny*CNY_RATE) : 0;
+  var totalPrice = rubPrice>0 ? Math.round(rubPrice*1.10) : 0;
+  if(!model){alert('Выберите или введите модель!');return;}
+  cart.push({cat:p.label,model:model,color:color,size:size,link:link,comment:comment,cny:cny,rubPrice:rubPrice,totalPrice:totalPrice});
   updateCartUI();
-  var msg = document.getElementById(id + '-added');
-  if(msg){ msg.style.display = 'block'; setTimeout(function(){ msg.style.display = 'none'; }, 2500); }
-  document.getElementById('cart-panel').classList.add('open');
-}
-
-function removeFromCart(i) {
-  cart.splice(i, 1);
-  updateCartUI();
-}
-
-function toggleCart() {
-  var panel = document.getElementById('cart-panel');
-  var isOpen = panel.classList.contains('open');
-  panel.classList.toggle('open');
-  if(!isOpen){
-    setTimeout(function(){
-      panel.scrollIntoView({behavior:'smooth', block:'start'});
-    }, 50);
-  }
+  var msg = document.getElementById(id+'-added');
+  if(msg){msg.style.display='block';setTimeout(function(){msg.style.display='none';},2500);}
+  toggleCart();
 }
 
 function sendCartOrder() {
