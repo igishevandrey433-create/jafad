@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaFAD — Доставка кроссовок с Poizon</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
+
+/* NAV */
+nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px;}
+.logo span{color:#00FEFF;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{color:#888;text-decoration:none;font-size:14px;transition:color .2s;}
+.nav-links a:hover{color:#00FEFF;}
+.nav-btn{background:#00FEFF;color:#0d0d0d;font-size:13px;font-weight:700;padding:9px 22px;border-radius:24px;text-decoration:none;letter-spacing:1px;}
+
+/* HERO */
+.hero{background:#111;padding:80px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:#00FEFF;opacity:.03;}
+.hero::after{content:'';position:absolute;right:50px;top:50px;width:300px;height:300px;border-radius:50%;background:#00FEFF;opacity:.03;}
+.hero-left{flex:1;max-width:520px;}
+.hero-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:20px;}
+.hero-title{font-size:64px;font-weight:900;line-height:1.05;margin-bottom:20px;}
+.hero-title span{color:#00FEFF;}
+.hero-sub{font-size:16px;color:#555;margin-bottom:32px;line-height:1.7;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:14px;padding:14px 28px;border-radius:28px;text-decoration:none;display:inline-block;}
+.btn-secondary{border:1px solid #333;color:#aaa;font-size:14px;padding:14px 28px;border-radius:28px;text-decoration:none;display:inline-block;}
+.hero-badges{display:flex;gap:24px;margin-top:32px;}
+.badge-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:#00FEFF;}
+.hero-right{flex:1;max-width:400px;}
+.hero-box{background:#1a1a1a;border:1px solid #222;border-radius:16px;padding:32px;text-align:center;}
+.hero-box-title{font-size:42px;font-weight:900;color:#00FEFF;opacity:.7;letter-spacing:4px;}
+.hero-box-sub{font-size:12px;color:#444;letter-spacing:3px;margin-top:8px;}
+
+/* SECTION */
+.section{padding:60px 40px;}
+.section-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:10px;}
+.section-title{font-size:28px;font-weight:700;margin-bottom:30px;}
+
+/* CATALOGUE */
+.catalogue{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.card{background:#111;border:1.5px solid #1e1e1e;border-radius:16px;overflow:hidden;transition:border-color .2s;}
+.card:hover{border-color:#00FEFF;}
+.card-img{background:#1a1a1a;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;}
+.card-img-inner{font-size:13px;color:#333;text-align:center;}
+.card-badge{position:absolute;top:12px;left:12px;background:#00FEFF;color:#0d0d0d;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;}
+.card-body{padding:18px;}
+.card-brand{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:4px;}
+.card-name{font-size:15px;font-weight:700;margin-bottom:8px;}
+.card-label{font-size:11px;color:#555;margin-bottom:6px;letter-spacing:1px;}
+.card-colors{display:flex;gap:8px;margin-bottom:14px;}
+.color-btn{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .15s;}
+.color-btn.active{border-color:#00FEFF;}
+.card-sizes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.size-btn{padding:5px 11px;border-radius:8px;border:1px solid #2a2a2a;font-size:12px;font-weight:600;color:#666;cursor:pointer;background:transparent;transition:all .15s;}
+.size-btn:hover{border-color:#00FEFF;color:#00FEFF;}
+.size-btn.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
+.size-btn.na{color:#333;cursor:not-allowed;text-decoration:line-through;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;}
+.card-price{font-size:20px;font-weight:900;}
+.card-price span{font-size:11px;color:#444;font-weight:400;margin-left:4px;}
+.order-btn{background:#00FEFF;color:#0d0d0d;border:none;border-radius:24px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;}
+.order-btn:hover{background:#00E5E6;}
+
+/* ABOUT */
+.about{background:#111;border-bottom:1px solid #1a1a1a;}
+.about-inner{display:flex;gap:60px;align-items:center;flex-wrap:wrap;}
+.about-text{flex:1;min-width:260px;}
+.about-text p{font-size:15px;color:#555;line-height:1.8;margin-top:14px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-width:260px;}
+.stat{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:20px;text-align:center;}
+.stat-num{font-size:28px;font-weight:900;color:#00FEFF;}
+.stat-label{font-size:11px;color:#555;margin-top:4px;letter-spacing:1px;}
+
+/* HOW */
+.how{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.step{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:24px;}
+.step-num{font-size:36px;font-weight:900;color:#1e1e1e;margin-bottom:10px;}
+.step-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+.step-desc{font-size:13px;color:#555;line-height:1.7;}
+
+/* CONTACTS */
+.contacts{background:#111;border-bottom:1px solid #1a1a1a;}
+.contact-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
+.tg-btn{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
+.wa-btn{border:1px solid #333;color:#aaa;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
+
+/* FOOTER */
+footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-size:18px;font-weight:900;}
+.footer-logo span{color:#00FEFF;}
+.footer-copy{font-size:12px;color:#444;}
+.footer-tag{font-size:12px;color:#333;}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(to right,transparent,#00FEFF44,transparent);margin:0 40px;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Ja<span>FAD</span></div>
+  <div class="nav-links">
+    <a href="#catalogue">Каталог</a>
+    <a href="#about">О нас</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+  <a href="#contacts" class="nav-btn">ЗАКАЗАТЬ</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">POIZON DELIVERY</div>
+    <div class="hero-title">Ja<span>FAD</span></div>
+    <div class="hero-sub">Доставка оригинальных кроссовок<br>прямо с платформы Poizon</div>
+    <div class="hero-btns">
+      <a href="#catalogue" class="btn-primary">Смотреть каталог</a>
+      <a href="#contacts" class="btn-secondary">Как заказать</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge-item"><div class="badge-dot"></div>Оригинал</div>
+      <div class="badge-item"><div class="badge-dot"></div>Быстро</div>
+      <div class="badge-item"><div class="badge-dot"></div>Надёжно</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-box">
+      <div class="hero-box-title">POIZON</div>
+      <div class="hero-box-sub">A U T H E N T I C</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOGUE -->
+<div class="section catalogue" id="catalogue">
+  <div class="section-tag">КАТАЛОГ</div>
+  <div class="section-title">Популярные модели</div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<div class="section about" id="about">
+  <div class="section-tag">О НАС</div>
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-title">Почему JaFAD?</div>
+      <p>Мы доставляем оригинальные кроссовки прямо с платформы Poizon. Каждый товар проходит проверку подлинности перед отправкой. Работаем быстро и надёжно.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">ОРИГИНАЛ</div></div>
+      <div class="stat"><div class="stat-num">14 дн</div><div class="stat-label">ДОСТАВКА</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">ЗАКАЗОВ</div></div>
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">ПОДДЕРЖКА</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div class="section how" id="how">
+  <div class="section-tag">КАК ЗАКАЗАТЬ</div>
+  <div class="section-title">Три простых шага</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Напишите нам</div><div class="step-desc">Свяжитесь через Telegram или WhatsApp — отправим актуальный каталог с ценами</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Выберите модель</div><div class="step-desc">Выберите кроссовки, цвет и размер — оформим заказ на Poizon</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Получите заказ</div><div class="step-desc">Доставим прямо к вам — быстро, надёжно, с гарантией оригинала</div></div>
+  </div>
+</div>
+
+<!-- CONTACTS -->
+<div class="section contacts" id="contacts">
+  <div class="section-tag">КОНТАКТЫ</div>
+  <div class="section-title">Связаться с нами</div>
+  <div class="contact-btns">
+    <a href="https://t.me/ВАШ_TELEGRAM" class="tg-btn">Написать в Telegram</a>
+    <a href="https://wa.me/ВАШТЕЛЕФОН" class="wa-btn">WhatsApp</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ja<span>FAD</span></div>
+  <div class="footer-copy">© 2026 JaFAD · Poizon Delivery</div>
+  <div class="footer-tag">Just a Fucking Awesome Delivery</div>
+</footer>
+
+<script>
+const products=[
+  {name:'Nike Air Max 90',brand:'NIKE',colors:['#f5f5f0','#1a1a1a','#c0392b','#2980b9'],colorNames:['White','Black','Red','Blue'],sizes:['38','39','40','41','42','43','44','45'],na:['38','45'],prices:{White:13500,Black:14200,Red:12800,Blue:13100}},
+  {name:'New Balance 550',brand:'NEW BALANCE',colors:['#ffffff','#2c3e50','#27ae60','#e8d5b0'],colorNames:['White','Navy','Green','Cream'],sizes:['38','39','40','41','42','43','44'],na:['44'],prices:{White:9800,Navy:10200,Green:9500,Cream:10500}},
+  {name:'Adidas Samba OG',brand:'ADIDAS',colors:['#ffffff','#1a1a1a','#8B4513','#2c3e50'],colorNames:['White','Black','Brown','Navy'],sizes:['39','40','41','42','43','44','45'],na:['39'],prices:{White:11200,Black:11800,Brown:12100,Navy:11500}}
+];
+
+function buildCard(p,selColor,selSize){
+  return`<div class="card-img"><div class="card-img-inner">📦<br>фото товара</div><div class="card-badge">ORIGINAL</div></div>
+  <div class="card-body">
+    <div class="card-brand">${p.brand}</div>
+    <div class="card-name">${p.name}</div>
+    <div class="card-label">ЦВЕТ: ${selColor}</div>
+    <div class="card-colors">${p.colorNames.map((cn,i)=>`<div class="color-btn${cn===selColor?' active':''}" data-color="${cn}" style="background:${p.colors[i]};${p.colors[i]==='#ffffff'?'border-color:#333;':''}"></div>`).join('')}</div>
+    <div class="card-label">РАЗМЕР (EU)</div>
+    <div class="card-sizes">${p.sizes.map(s=>`<button class="size-btn${p.na.includes(s)?' na':''}${s===selSize?' active':''}" data-size="${s}"${p.na.includes(s)?' disabled':''}>${s}</button>`).join('')}</div>
+    <div class="card-footer">
+      <div class="card-price">${p.prices[selColor].toLocaleString()} ₽<span>Poizon</span></div>
+      <a href="https://t.me/ВАШ_TELEGRAM?text=Хочу заказать ${encodeURIComponent(p.name+' '+selColor+(selSize?' р.'+selSize:''))}" class="order-btn">Заказать</a>
+    </div>
+  </div>`;
+}
+
+function rebind(card,p){
+  card.querySelectorAll('.color-btn').forEach(b=>b.onclick=()=>{card.dataset.color=b.dataset.color;card.innerHTML=buildCard(p,b.dataset.color,card.dataset.size||null);rebind(card,p);});
+  card.querySelectorAll('.size-btn:not(.na)').forEach(b=>b.onclick=()=>{card.dataset.size=b.dataset.size;card.innerHTML=buildCard(p,card.dataset.color||p.colorNames[0],b.dataset.size);rebind(card,p);});
+}
+
+const g=document.getElementById('grid');
+products.forEach(p=>{
+  const card=document.createElement('div');
+  card.className='card';
+  card.innerHTML=buildCard(p,p.colorNames[0],null);
+  g.appendChild(card);
+  rebind(card,p);
+});
+</script>
+</body>
+</html>
