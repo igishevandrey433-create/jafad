@@ -3,88 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JaFAD — Доставка кроссовок с Poizon</title>
+<title>JaFAD — Доставка с Poizon</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
-
 nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
 .logo{font-size:24px;font-weight:900;letter-spacing:-1px;}
 .logo span{color:#00FEFF;}
 .nav-links{display:flex;gap:32px;}
 .nav-links a{color:#888;text-decoration:none;font-size:14px;transition:color .2s;}
 .nav-links a:hover{color:#00FEFF;}
+.nav-right{display:flex;align-items:center;gap:12px;}
 .nav-btn{background:#00FEFF;color:#0d0d0d;font-size:13px;font-weight:700;padding:9px 22px;border-radius:24px;text-decoration:none;}
+.cart-btn{position:relative;background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;font-size:13px;font-weight:700;padding:9px 18px;border-radius:24px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;}
+.cart-btn:hover{border-color:#00FEFF;color:#00FEFF;}
+.cart-count{background:#00FEFF;color:#0d0d0d;font-size:11px;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;display:none;}
+.cart-count.visible{display:flex;}
 
-.hero{background:#111;padding:80px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
+/* DELIVERY BANNER */
+.delivery-bar{background:#0a1a1a;border-bottom:1px solid #00FEFF22;padding:16px 40px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.delivery-bar-left{flex:1;min-width:240px;}
+.delivery-label{font-size:11px;letter-spacing:3px;color:#00FEFF;margin-bottom:8px;}
+.delivery-inputs{display:flex;gap:10px;flex-wrap:wrap;}
+.delivery-inputs input{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:10px 14px;color:#fff;font-size:14px;outline:none;flex:1;min-width:180px;font-family:Arial,sans-serif;}
+.delivery-inputs input:focus{border-color:#00FEFF;}
+.delivery-pvz-input{width:100%;margin-top:8px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:10px 14px;color:#fff;font-size:14px;outline:none;font-family:Arial,sans-serif;}
+.delivery-pvz-input:focus{border-color:#00FEFF;}
+.pvz-btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+.pvz-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;border:1px solid #2a2a2a;color:#888;text-decoration:none;font-size:12px;font-weight:700;transition:all .2s;}
+.pvz-btn:hover,.pvz-btn.active{border-color:#00FEFF;color:#00FEFF;}
+.delivery-hint{font-size:11px;color:#555;margin-top:6px;}
+
+/* CART PANEL */
+.cart-panel{display:none;background:#111;border-bottom:2px solid #00FEFF33;padding:24px 40px;}
+.cart-panel.open{display:block;}
+.cart-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.cart-title span{color:#00FEFF;}
+.cart-empty{color:#555;font-size:14px;padding:20px 0;}
+.cart-items{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.cart-item{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.cart-item-info{flex:1;}
+.cart-item-cat{font-size:10px;letter-spacing:2px;color:#00FEFF;margin-bottom:2px;}
+.cart-item-name{font-size:14px;font-weight:700;}
+.cart-item-details{font-size:12px;color:#666;margin-top:2px;}
+.cart-item-remove{background:transparent;border:1px solid #333;border-radius:8px;color:#666;padding:6px 12px;cursor:pointer;font-size:12px;transition:all .15s;white-space:nowrap;}
+.cart-item-remove:hover{border-color:#e74c3c;color:#e74c3c;}
+.cart-send-btn{background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:16px 32px;font-size:15px;font-weight:900;cursor:pointer;transition:background .2s;}
+.cart-send-btn:hover{background:#00E5E6;}
+.cart-send-btn:disabled{background:#1a2a2a;color:#555;cursor:not-allowed;}
+
+.hero{background:#111;padding:60px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:#00FEFF;opacity:.03;}
 .hero-left{flex:1;max-width:520px;}
 .hero-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:20px;}
-.hero-title{font-size:64px;font-weight:900;line-height:1.05;margin-bottom:20px;}
+.hero-title{font-size:60px;font-weight:900;line-height:1.05;margin-bottom:16px;}
 .hero-title span{color:#00FEFF;}
-.hero-sub{font-size:16px;color:#555;margin-bottom:32px;line-height:1.7;}
+.hero-sub{font-size:15px;color:#555;margin-bottom:28px;line-height:1.7;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-primary{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:14px;padding:14px 28px;border-radius:28px;text-decoration:none;display:inline-block;}
-.btn-secondary{border:1px solid #333;color:#aaa;font-size:14px;padding:14px 28px;border-radius:28px;text-decoration:none;display:inline-block;}
-.hero-badges{display:flex;gap:24px;margin-top:32px;}
+.btn-primary{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:14px;padding:13px 26px;border-radius:28px;text-decoration:none;display:inline-block;}
+.btn-secondary{border:1px solid #333;color:#aaa;font-size:14px;padding:13px 26px;border-radius:28px;text-decoration:none;display:inline-block;}
+.hero-badges{display:flex;gap:24px;margin-top:28px;}
 .badge-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;}
 .badge-dot{width:8px;height:8px;border-radius:50%;background:#00FEFF;}
-.hero-right{flex:1;max-width:400px;}
-.hero-box{background:#1a1a1a;border:1px solid #222;border-radius:16px;padding:32px;text-align:center;}
-.hero-box-title{font-size:42px;font-weight:900;color:#00FEFF;opacity:.7;letter-spacing:4px;}
+.hero-right{flex:1;max-width:380px;}
+.hero-box{background:#1a1a1a;border:1px solid #222;border-radius:16px;padding:28px;text-align:center;}
+.hero-box-title{font-size:38px;font-weight:900;color:#00FEFF;opacity:.7;letter-spacing:4px;}
 .hero-box-sub{font-size:12px;color:#444;letter-spacing:3px;margin-top:8px;}
-
-.section{padding:60px 40px;}
+.section{padding:50px 40px;}
 .section-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:10px;}
-.section-title{font-size:28px;font-weight:700;margin-bottom:30px;}
-
-/* ORDER FORM */
+.section-title{font-size:26px;font-weight:700;margin-bottom:26px;}
 .order-section{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
-.order-card{background:#111;border:1px solid #1e1e1e;border-radius:20px;padding:40px;max-width:700px;margin:0 auto;}
-.field{margin-bottom:24px;}
-.field-label{font-size:12px;letter-spacing:2px;color:#00FEFF;margin-bottom:10px;display:block;}
-.field input,.field select,.field textarea{width:100%;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;outline:none;transition:border-color .2s;font-family:Arial,sans-serif;}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.tab{padding:11px 20px;border-radius:24px;border:1px solid #2a2a2a;font-size:13px;font-weight:700;color:#666;cursor:pointer;background:transparent;transition:all .2s;display:flex;align-items:center;gap:8px;}
+.tab:hover{border-color:#00FEFF;color:#00FEFF;}
+.tab.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid #1e1e1e;}
+.subtab{padding:7px 16px;border-radius:20px;border:1px solid #222;font-size:12px;font-weight:700;color:#555;cursor:pointer;background:transparent;transition:all .2s;}
+.subtab:hover{border-color:#00FEFF;color:#00FEFF;}
+.subtab.active{background:#1a2a2a;border-color:#00FEFF;color:#00FEFF;}
+.subpanel{display:none;}
+.subpanel.active{display:block;}
+.order-card{background:#111;border:1px solid #1e1e1e;border-radius:20px;padding:36px;max-width:680px;margin:0 auto;}
+.field{margin-bottom:22px;}
+.field-label{font-size:11px;letter-spacing:2px;color:#00FEFF;margin-bottom:9px;display:block;}
+.field input,.field select,.field textarea{width:100%;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;outline:none;transition:border-color .2s;font-family:Arial,sans-serif;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:#00FEFF;}
 .field select option{background:#111;}
-.field textarea{resize:vertical;min-height:80px;}
-.sizes-grid{display:flex;flex-wrap:wrap;gap:10px;}
-.sz{padding:10px 16px;border-radius:10px;border:1px solid #2a2a2a;font-size:13px;font-weight:700;color:#666;cursor:pointer;background:transparent;transition:all .15s;}
+.field textarea{resize:vertical;min-height:70px;}
+.custom-model{display:none;margin-top:8px;}
+.custom-model input{width:100%;background:#0d0d0d;border:1px solid #00FEFF;border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;outline:none;font-family:Arial,sans-serif;}
+.sizes-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.sz{padding:9px 14px;border-radius:10px;border:1px solid #2a2a2a;font-size:13px;font-weight:700;color:#666;cursor:pointer;background:transparent;transition:all .15s;}
 .sz:hover{border-color:#00FEFF;color:#00FEFF;}
 .sz.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
-.colors-row{display:flex;flex-wrap:wrap;gap:10px;}
-.col-btn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;border:1px solid #2a2a2a;cursor:pointer;background:transparent;color:#888;font-size:13px;transition:all .15s;}
-.col-btn:hover{border-color:#00FEFF;color:#fff;}
-.col-btn.active{border-color:#00FEFF;color:#fff;background:#1a1a1a;}
-.col-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;}
-.submit-btn{width:100%;background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:18px;font-size:16px;font-weight:900;cursor:pointer;letter-spacing:1px;margin-top:8px;transition:background .2s;}
-.submit-btn:hover{background:#00E5E6;}
-.success{display:none;background:#0a2a1a;border:1px solid #00FEFF;border-radius:12px;padding:20px;text-align:center;margin-top:20px;}
-.success p{color:#00FEFF;font-size:15px;font-weight:700;}
-.success span{color:#555;font-size:13px;}
-
-/* ABOUT */
+.colors-row{display:flex;flex-wrap:wrap;gap:8px;}
+.col-btn{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:10px;border:1px solid #2a2a2a;cursor:pointer;background:transparent;color:#888;font-size:13px;transition:all .15s;position:relative;}
+.col-btn:hover,.col-btn.active{border-color:#00FEFF;color:#fff;background:#1a1a1a;}
+.col-dot{width:15px;height:15px;border-radius:50%;flex-shrink:0;}
+.size-guide{background:#0a1a1a;border:1px solid #00FEFF22;border-radius:12px;padding:14px 18px;margin-bottom:14px;}
+.size-guide-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+.size-guide-toggle span{font-size:11px;letter-spacing:2px;color:#00FEFF;}
+.size-guide-toggle .arrow{font-size:11px;color:#00FEFF;transition:transform .2s;}
+.size-guide-toggle.open .arrow{transform:rotate(180deg);}
+.size-guide-table{display:none;margin-top:12px;overflow-x:auto;}
+.size-guide-table.open{display:block;}
+.size-guide-table table{width:100%;border-collapse:collapse;font-size:12px;}
+.size-guide-table th{color:#00FEFF;padding:5px 8px;border-bottom:1px solid #1e2e2e;text-align:left;letter-spacing:1px;}
+.size-guide-table td{color:#888;padding:5px 8px;border-bottom:1px solid #1a1a1a;}
+.size-guide-table tr:hover td{color:#fff;background:#0d2020;}
+.size-guide-note{font-size:11px;color:#555;margin-top:8px;line-height:1.6;}
+.add-cart-btn{width:100%;background:#1a2a2a;color:#00FEFF;border:2px solid #00FEFF;border-radius:28px;padding:16px;font-size:15px;font-weight:900;cursor:pointer;transition:all .2s;margin-top:6px;}
+.add-cart-btn:hover{background:#00FEFF;color:#0d0d0d;}
+.added-msg{display:none;background:#0a2a1a;border:1px solid #00FEFF;border-radius:12px;padding:14px;text-align:center;margin-top:12px;}
+.added-msg p{color:#00FEFF;font-size:14px;font-weight:700;}
 .about{background:#111;border-bottom:1px solid #1a1a1a;}
 .about-inner{display:flex;gap:60px;align-items:center;flex-wrap:wrap;}
 .about-text{flex:1;min-width:260px;}
 .about-text p{font-size:15px;color:#555;line-height:1.8;margin-top:14px;}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-width:260px;}
-.stat{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:20px;text-align:center;}
-.stat-num{font-size:28px;font-weight:900;color:#00FEFF;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-width:260px;}
+.stat{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:12px;padding:18px;text-align:center;}
+.stat-num{font-size:26px;font-weight:900;color:#00FEFF;}
 .stat-label{font-size:11px;color:#555;margin-top:4px;letter-spacing:1px;}
-
 .how{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
-.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
-.step{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:24px;}
-.step-num{font-size:36px;font-weight:900;color:#1e1e1e;margin-bottom:10px;}
-.step-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
+.step{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:22px;}
+.step-num{font-size:34px;font-weight:900;color:#1e1e1e;margin-bottom:10px;}
+.step-title{font-size:14px;font-weight:700;margin-bottom:6px;}
 .step-desc{font-size:13px;color:#555;line-height:1.7;}
-
 .contacts{background:#111;border-bottom:1px solid #1a1a1a;}
-.contact-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
-.tg-btn{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
-.wa-btn{border:1px solid #333;color:#aaa;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
-
-footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.contact-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;}
+.tg-btn{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:14px;padding:14px 32px;border-radius:32px;text-decoration:none;display:inline-block;}
+.wa-btn{border:1px solid #333;color:#aaa;font-size:14px;padding:14px 32px;border-radius:32px;text-decoration:none;display:inline-block;}
+footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .footer-logo{font-size:18px;font-weight:900;}
 .footer-logo span{color:#00FEFF;}
 .footer-copy{font-size:12px;color:#444;}
@@ -101,14 +153,45 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
     <a href="#about">О нас</a>
     <a href="#contacts">Контакты</a>
   </div>
-  <a href="#order" class="nav-btn">ЗАКАЗАТЬ</a>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Корзина
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <a href="#order" class="nav-btn">ДОБАВИТЬ</a>
+  </div>
 </nav>
+
+<!-- DELIVERY BAR (глобальный) -->
+<div class="delivery-bar">
+  <div class="delivery-bar-left">
+    <div class="delivery-label">📍 АДРЕС ДОСТАВКИ — ПРИМЕНЯЕТСЯ КО ВСЕМ ТОВАРАМ</div>
+    <div class="delivery-inputs">
+      <input type="text" id="global-name" placeholder="Ваше имя..." oninput="saveDelivery()"/>
+      <input type="text" id="global-city" placeholder="Ваш город..." oninput="saveDelivery();updateGlobalPVZ()"/>
+    </div>
+    <div class="pvz-btns">
+      <a id="global-cdek" href="https://www.cdek.ru/ru/offices/" target="_blank" class="pvz-btn">📦 Найти пункт СДЭК</a>
+      <a id="global-boxberry" href="https://boxberry.ru/find_a_point/" target="_blank" class="pvz-btn">📫 Найти пункт Boxberry</a>
+    </div>
+    <input type="text" id="global-pvz" class="delivery-pvz-input" placeholder="Адрес пункта выдачи (вставьте после выбора)..." oninput="saveDelivery()"/>
+    <div class="delivery-hint">💡 Заполните один раз — применится ко всем товарам в корзине</div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-title">🛒 Корзина <span id="cart-title-count"></span></div>
+  <div id="cart-body">
+    <div class="cart-empty">Корзина пуста — добавьте товары ниже</div>
+  </div>
+</div>
 
 <div class="hero">
   <div class="hero-left">
     <div class="hero-tag">POIZON DELIVERY</div>
     <div class="hero-title">Ja<span>FAD</span></div>
-    <div class="hero-sub">Доставка оригинальных кроссовок<br>прямо с платформы Poizon</div>
+    <div class="hero-sub">Доставка оригинальных товаров<br>прямо с платформы Poizon</div>
     <div class="hero-btns">
       <a href="#order" class="btn-primary">Оформить заказ</a>
       <a href="#about" class="btn-secondary">О нас</a>
@@ -127,79 +210,78 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   </div>
 </div>
 
-<!-- ORDER FORM -->
 <div class="section order-section" id="order">
-  <div class="section-tag">ОФОРМИТЬ ЗАКАЗ</div>
-  <div class="section-title">Выберите параметры</div>
-  <div class="order-card">
+  <div class="section-tag">ДОБАВИТЬ В КОРЗИНУ</div>
+  <div class="section-title">Выберите категорию</div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('shoes',this)">👟 Обувь</button>
+    <button class="tab" onclick="switchTab('pants',this)">👖 Штаны</button>
+    <button class="tab" onclick="switchTab('hats',this)">🧢 Головные уборы</button>
+    <button class="tab" onclick="switchTab('jackets',this)">🧥 Куртки</button>
+    <button class="tab" onclick="switchTab('underwear',this)">🩲 Нижнее бельё</button>
+  </div>
 
-    <div class="field">
-      <label class="field-label">МОДЕЛЬ КРОССОВОК</label>
-      <select id="model">
-        <option value="">— Выберите модель —</option>
-        <option>Nike Air Max 90</option>
-        <option>Nike Air Force 1</option>
-        <option>Nike Dunk Low</option>
-        <option>New Balance 550</option>
-        <option>New Balance 574</option>
-        <option>Adidas Samba OG</option>
-        <option>Adidas Campus</option>
-        <option>Другая модель</option>
-      </select>
+  <div class="tab-panel active" id="panel-shoes">
+    <div class="subtabs">
+      <button class="subtab active" onclick="switchSub('shoes','sneakers',this)">👟 Кроссовки</button>
+      <button class="subtab" onclick="switchSub('shoes','boots',this)">🥾 Ботинки</button>
+      <button class="subtab" onclick="switchSub('shoes','sandals',this)">🩴 Сандалии</button>
+      <button class="subtab" onclick="switchSub('shoes','loafers',this)">👞 Лоферы</button>
     </div>
+    <div class="subpanel active" id="shoes-sneakers"></div>
+    <div class="subpanel" id="shoes-boots"></div>
+    <div class="subpanel" id="shoes-sandals"></div>
+    <div class="subpanel" id="shoes-loafers"></div>
+  </div>
 
-    <div class="field">
-      <label class="field-label">ССЫЛКА С POIZON (необязательно)</label>
-      <input type="text" id="link" placeholder="https://poizon.com/..."/>
+  <div class="tab-panel" id="panel-pants">
+    <div class="subtabs">
+      <button class="subtab active" onclick="switchSub('pants','sport',this)">🏃 Спортивные</button>
+      <button class="subtab" onclick="switchSub('pants','jeans',this)">👖 Джинсы</button>
+      <button class="subtab" onclick="switchSub('pants','cargo',this)">🪖 Карго</button>
+      <button class="subtab" onclick="switchSub('pants','shorts',this)">🩳 Шорты</button>
     </div>
+    <div class="subpanel active" id="pants-sport"></div>
+    <div class="subpanel" id="pants-jeans"></div>
+    <div class="subpanel" id="pants-cargo"></div>
+    <div class="subpanel" id="pants-shorts"></div>
+  </div>
 
-    <div class="field">
-      <label class="field-label">ЦВЕТ</label>
-      <div class="colors-row" id="colors">
-        <button class="col-btn" data-color="White"><div class="col-dot" style="background:#f5f5f0;border:1px solid #444;"></div>White</button>
-        <button class="col-btn" data-color="Black"><div class="col-dot" style="background:#1a1a1a;border:1px solid #444;"></div>Black</button>
-        <button class="col-btn" data-color="Grey"><div class="col-dot" style="background:#888;"></div>Grey</button>
-        <button class="col-btn" data-color="Red"><div class="col-dot" style="background:#c0392b;"></div>Red</button>
-        <button class="col-btn" data-color="Blue"><div class="col-dot" style="background:#2980b9;"></div>Blue</button>
-        <button class="col-btn" data-color="Green"><div class="col-dot" style="background:#27ae60;"></div>Green</button>
-        <button class="col-btn" data-color="Cream"><div class="col-dot" style="background:#e8d5b0;border:1px solid #444;"></div>Cream</button>
-        <button class="col-btn" data-color="Brown"><div class="col-dot" style="background:#8B4513;"></div>Brown</button>
-      </div>
+  <div class="tab-panel" id="panel-hats">
+    <div class="subtabs">
+      <button class="subtab active" onclick="switchSub('hats','caps',this)">🧢 Кепки</button>
+      <button class="subtab" onclick="switchSub('hats','beanies',this)">🎿 Шапки</button>
+      <button class="subtab" onclick="switchSub('hats','bucket',this)">🪣 Панамы</button>
+      <button class="subtab" onclick="switchSub('hats','bandana',this)">🫱 Банданы</button>
     </div>
+    <div class="subpanel active" id="hats-caps"></div>
+    <div class="subpanel" id="hats-beanies"></div>
+    <div class="subpanel" id="hats-bucket"></div>
+    <div class="subpanel" id="hats-bandana"></div>
+  </div>
 
-    <div class="field">
-      <label class="field-label">РАЗМЕР (EU)</label>
-      <div class="sizes-grid" id="sizes">
-        <button class="sz" data-size="36">36</button>
-        <button class="sz" data-size="37">37</button>
-        <button class="sz" data-size="38">38</button>
-        <button class="sz" data-size="39">39</button>
-        <button class="sz" data-size="40">40</button>
-        <button class="sz" data-size="41">41</button>
-        <button class="sz" data-size="42">42</button>
-        <button class="sz" data-size="43">43</button>
-        <button class="sz" data-size="44">44</button>
-        <button class="sz" data-size="45">45</button>
-        <button class="sz" data-size="46">46</button>
-      </div>
+  <div class="tab-panel" id="panel-jackets">
+    <div class="subtabs">
+      <button class="subtab active" onclick="switchSub('jackets','puffer',this)">🫧 Пуховики</button>
+      <button class="subtab" onclick="switchSub('jackets','bomber',this)">✈️ Бомберы</button>
+      <button class="subtab" onclick="switchSub('jackets','windbreaker',this)">💨 Ветровки</button>
+      <button class="subtab" onclick="switchSub('jackets','hoodie',this)">👕 Худи</button>
     </div>
+    <div class="subpanel active" id="jackets-puffer"></div>
+    <div class="subpanel" id="jackets-bomber"></div>
+    <div class="subpanel" id="jackets-windbreaker"></div>
+    <div class="subpanel" id="jackets-hoodie"></div>
+  </div>
 
-    <div class="field">
-      <label class="field-label">ВАШЕ ИМЯ</label>
-      <input type="text" id="name" placeholder="Как вас зовут?"/>
+  <div class="tab-panel" id="panel-underwear">
+    <div class="subtabs">
+      <button class="subtab active" onclick="switchSub('underwear','boxers',this)">🩲 Боксеры</button>
+      <button class="subtab" onclick="switchSub('underwear','briefs',this)">🩳 Брифы</button>
+      <button class="subtab" onclick="switchSub('underwear','socks',this)">🧦 Носки</button>
     </div>
-
-    <div class="field">
-      <label class="field-label">КОММЕНТАРИЙ (необязательно)</label>
-      <textarea id="comment" placeholder="Любые пожелания..."></textarea>
-    </div>
-
-    <button class="submit-btn" onclick="submitOrder()">ОТПРАВИТЬ ЗАКАЗ В TELEGRAM</button>
-
-    <div class="success" id="success">
-      <p>Заказ отправлен! ✓</p>
-      <span>Мы свяжемся с вами в Telegram в ближайшее время</span>
-    </div>
+    <div class="subpanel active" id="underwear-boxers"></div>
+    <div class="subpanel" id="underwear-briefs"></div>
+    <div class="subpanel" id="underwear-socks"></div>
   </div>
 </div>
 
@@ -210,7 +292,7 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   <div class="about-inner">
     <div class="about-text">
       <div class="section-title">Почему JaFAD?</div>
-      <p>Мы доставляем оригинальные кроссовки прямо с платформы Poizon. Каждый товар проходит проверку подлинности перед отправкой. Работаем быстро и надёжно.</p>
+      <p>Мы доставляем оригинальные товары прямо с платформы Poizon. Каждый товар проходит проверку подлинности перед отправкой. Работаем быстро и надёжно.</p>
     </div>
     <div class="stats">
       <div class="stat"><div class="stat-num">100%</div><div class="stat-label">ОРИГИНАЛ</div></div>
@@ -221,13 +303,13 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   </div>
 </div>
 
-<div class="section how" id="how">
+<div class="section how">
   <div class="section-tag">КАК ЗАКАЗАТЬ</div>
   <div class="section-title">Три простых шага</div>
   <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">Заполните форму</div><div class="step-desc">Выберите модель, цвет и размер — заполните форму выше</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Мы свяжемся</div><div class="step-desc">Напишем в Telegram, уточним детали и стоимость доставки</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">Получите заказ</div><div class="step-desc">Доставим прямо к вам — быстро, надёжно, с гарантией оригинала</div></div>
+    <div class="step"><div class="step-num">01</div><div class="step-title">Заполните доставку</div><div class="step-desc">Укажите имя, город и пункт выдачи вверху — один раз для всех товаров</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Добавьте товары</div><div class="step-desc">Выбирайте модели, цвета и размеры — добавляйте в корзину</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Отправьте заказ</div><div class="step-desc">Нажмите «Отправить заказ» в корзине — всё придёт нам в Telegram одним сообщением</div></div>
   </div>
 </div>
 
@@ -247,37 +329,222 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
 </footer>
 
 <script>
-document.querySelectorAll('.sz').forEach(b=>{
-  b.onclick=()=>{
-    document.querySelectorAll('.sz').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-  };
-});
-document.querySelectorAll('.col-btn').forEach(b=>{
-  b.onclick=()=>{
-    document.querySelectorAll('.col-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-  };
-});
+// ============ ДАННЫЕ ============
+const CATALOG = {
+  'shoes-sneakers':{label:'Кроссовки',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','New Balance 574','Adidas Samba OG','Adidas Campus'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'shoes-boots':{label:'Ботинки',models:['Nike Boots','Timberland 6-Inch','UGG Classic','Dr. Martens 1460','Adidas Terrex'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'shoes-sandals':{label:'Сандалии',models:['Nike Victori One','Adidas Adilette','Yeezy Slide','Jordan Hydro'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'shoes-loafers':{label:'Лоферы',models:['Nike Blazer','New Balance Loafer','Gucci Loafer'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'pants-sport':{label:'Спортивные штаны',models:['Nike Tech Fleece','Nike Jogger','Adidas Track Pants','Jordan Fleece Pants','New Balance Sweatpants'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'pants-jeans':{label:'Джинсы',models:["Levi's 501","Levi's 511",'Carhartt WIP Jeans','Wrangler Regular'],sizes:['28','29','30','31','32','33','34','36','38'],sizeType:'jeans'},
+  'pants-cargo':{label:'Карго',models:['Nike Cargo','Carhartt Cargo','New Balance Cargo','Dickies Cargo'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'pants-shorts':{label:'Шорты',models:['Nike Shorts','Jordan Shorts','Adidas Shorts','New Balance Shorts'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'hats-caps':{label:'Кепки',models:['Nike Swoosh Cap','Jordan Jumpman Cap','Adidas Cap','New Balance Cap'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'hats-beanies':{label:'Шапки',models:['Nike Beanie','Jordan Beanie','Adidas Beanie','New Balance Beanie'],sizes:['One Size'],sizeType:'hat'},
+  'hats-bucket':{label:'Панамы',models:['Nike Bucket Hat','Adidas Bucket Hat','Carhartt Bucket'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'hats-bandana':{label:'Банданы',models:['Nike Bandana','Jordan Bandana','Supreme Bandana'],sizes:['One Size'],sizeType:'hat'},
+  'jackets-puffer':{label:'Пуховики',models:['Nike Puffer','Jordan Puffer','Adidas Puffer','New Balance Puffer'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'jackets-bomber':{label:'Бомберы',models:['Nike Bomber','Jordan Bomber','Adidas Bomber','Alpha Industries MA-1'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'jackets-windbreaker':{label:'Ветровки',models:['Nike Windrunner','Adidas Windbreaker','New Balance Wind Jacket','Jordan Windbreaker'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'jackets-hoodie':{label:'Худи',models:['Nike Tech Fleece Hoodie','Jordan Hoodie','Adidas Hoodie','New Balance Hoodie'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'underwear-boxers':{label:'Боксеры',models:['Nike Boxers','Jordan Boxers','Adidas Boxers'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'underwear-briefs':{label:'Брифы',models:['Nike Briefs','Adidas Briefs'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'underwear-socks':{label:'Носки',models:['Nike Crew Socks','Nike Ankle Socks','Jordan Socks','Adidas Socks'],sizes:['S (36-38)','M (39-42)','L (43-46)'],sizeType:'socks'},
+};
 
-function submitOrder(){
-  const model=document.getElementById('model').value;
-  const link=document.getElementById('link').value;
-  const name=document.getElementById('name').value;
-  const comment=document.getElementById('comment').value;
-  const size=document.querySelector('.sz.active')?.dataset.size||'не выбран';
-  const color=document.querySelector('.col-btn.active')?.dataset.color||'не выбран';
+const SIZE_GUIDES = {
+  eu:`<table><tr><th>EU</th><th>см</th><th>US M</th><th>US W</th><th>UK</th></tr>
+    <tr><td>36</td><td>22.5</td><td>4</td><td>5.5</td><td>3.5</td></tr><tr><td>37</td><td>23.5</td><td>5</td><td>6.5</td><td>4.5</td></tr>
+    <tr><td>38</td><td>24</td><td>6</td><td>7.5</td><td>5</td></tr><tr><td>39</td><td>25</td><td>7</td><td>8.5</td><td>6</td></tr>
+    <tr><td>40</td><td>25.5</td><td>7.5</td><td>9</td><td>6.5</td></tr><tr><td>41</td><td>26.5</td><td>8.5</td><td>10</td><td>7.5</td></tr>
+    <tr><td>42</td><td>27</td><td>9</td><td>10.5</td><td>8</td></tr><tr><td>43</td><td>27.5</td><td>10</td><td>11.5</td><td>9</td></tr>
+    <tr><td>44</td><td>28.5</td><td>11</td><td>12.5</td><td>10</td></tr><tr><td>45</td><td>29</td><td>11.5</td><td>—</td><td>10.5</td></tr>
+    <tr><td>46</td><td>30</td><td>12.5</td><td>—</td><td>11.5</td></tr></table>
+    <div class="size-guide-note">💡 Измерьте длину стопы. При сомнении — берите больший.</div>`,
+  cloth:`<table><tr><th>Размер</th><th>Грудь (см)</th><th>Талия (см)</th><th>Рост (см)</th></tr>
+    <tr><td>XS</td><td>80-84</td><td>62-66</td><td>158-164</td></tr><tr><td>S</td><td>84-90</td><td>66-72</td><td>164-170</td></tr>
+    <tr><td>M</td><td>90-96</td><td>72-78</td><td>170-176</td></tr><tr><td>L</td><td>96-104</td><td>78-86</td><td>176-182</td></tr>
+    <tr><td>XL</td><td>104-112</td><td>86-94</td><td>182-188</td></tr><tr><td>XXL</td><td>112-120</td><td>94-104</td><td>188-194</td></tr>
+    <tr><td>3XL</td><td>120-130</td><td>104-114</td><td>194+</td></tr></table>
+    <div class="size-guide-note">💡 Измерьте обхват груди. При сомнении — берите больший.</div>`,
+  jeans:`<table><tr><th>Waist</th><th>Талия (см)</th><th>Бёдра (см)</th></tr>
+    <tr><td>28</td><td>71-73</td><td>91-93</td></tr><tr><td>29</td><td>74-76</td><td>94-96</td></tr>
+    <tr><td>30</td><td>77-79</td><td>97-99</td></tr><tr><td>31</td><td>80-82</td><td>100-102</td></tr>
+    <tr><td>32</td><td>83-85</td><td>103-105</td></tr><tr><td>34</td><td>89-91</td><td>109-111</td></tr>
+    <tr><td>36</td><td>92-96</td><td>112-116</td></tr></table>
+    <div class="size-guide-note">💡 Измерьте обхват талии. 1 дюйм = 2.54 см.</div>`,
+  hat:`<table><tr><th>Размер</th><th>Обхват головы (см)</th></tr>
+    <tr><td>S/M</td><td>54-57</td></tr><tr><td>L/XL</td><td>58-61</td></tr><tr><td>One Size</td><td>54-61</td></tr></table>
+    <div class="size-guide-note">💡 Измерьте обхват головы чуть выше ушей.</div>`,
+  socks:`<table><tr><th>Размер</th><th>Размер обуви EU</th></tr>
+    <tr><td>S</td><td>36-38</td></tr><tr><td>M</td><td>39-42</td></tr><tr><td>L</td><td>43-46</td></tr></table>
+    <div class="size-guide-note">💡 Выбирайте по размеру обуви.</div>`,
+};
 
-  if(!model){alert('Пожалуйста, выберите модель!');return;}
-  if(!name){alert('Пожалуйста, введите ваше имя!');return;}
+const COLORS = ['White','Black','Grey','Red','Blue','Green','Cream','Brown','Navy','Olive'];
+const COLOR_HEX = {White:'#f5f5f0',Black:'#1a1a1a',Grey:'#888',Red:'#c0392b',Blue:'#2980b9',Green:'#27ae60',Cream:'#e8d5b0',Brown:'#8B4513',Navy:'#2c3e50',Olive:'#6b7a30'};
+const COLOR_BORDER = {White:'border:1px solid #444;',Cream:'border:1px solid #444;',White2:'border:1px solid #444;'};
 
-  let msg=`Новый заказ JaFAD!\n\nМодель: ${model}\nЦвет: ${color}\nРазмер: ${size}\nИмя: ${name}`;
-  if(link) msg+=`\nСсылка: ${link}`;
-  if(comment) msg+=`\nКомментарий: ${comment}`;
+// ============ КОРЗИНА ============
+let cart = [];
 
-  window.open(`https://t.me/AndreyI2009?text=${encodeURIComponent(msg)}`,'_blank');
-  document.getElementById('success').style.display='block';
+function updateCartUI(){
+  const count = cart.length;
+  const el = document.getElementById('cart-count');
+  el.textContent = count;
+  el.classList.toggle('visible', count > 0);
+  document.getElementById('cart-title-count').textContent = count > 0 ? `(${count} товара)` : '';
+  const body = document.getElementById('cart-body');
+  if(count === 0){
+    body.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте товары ниже</div>';
+    return;
+  }
+  const itemsHtml = cart.map((item,i) => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-cat">${item.cat}</div>
+        <div class="cart-item-name">${item.model}</div>
+        <div class="cart-item-details">Цвет: ${item.color} · Размер: ${item.size}${item.link?' · <a href="'+item.link+'" target="_blank" style="color:#00FEFF;">Ссылка</a>':''}</div>
+        ${item.comment?`<div class="cart-item-details" style="color:#555;">💬 ${item.comment}</div>`:''}
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${i})">✕ Удалить</button>
+    </div>`).join('');
+  body.innerHTML = `
+    <div class="cart-items">${itemsHtml}</div>
+    <button class="cart-send-btn" onclick="sendCartOrder()">📨 Отправить весь заказ в Telegram (${count} товара)</button>`;
 }
+
+function addToCart(id){
+  const p = CATALOG[id];
+  const sel = document.getElementById(`${id}-model`)?.value||'';
+  const custom = document.getElementById(`${id}-custom-input`)?.value||'';
+  const model = sel==='custom'?(custom||''):sel;
+  const link = document.getElementById(`${id}-link`)?.value||'';
+  const comment = document.getElementById(`${id}-comment`)?.value||'';
+  const size = document.querySelector(`#${id} .sz.active`)?.dataset.size||'не выбран';
+  const color = document.querySelector(`#${id} .col-btn.active`)?.dataset.color||'не выбран';
+  if(!model){alert('Выберите или введите модель!');return;}
+  cart.push({cat:p.label,model,color,size,link,comment});
+  updateCartUI();
+  const msg = document.getElementById(`${id}-added`);
+  if(msg){msg.style.display='block';setTimeout(()=>msg.style.display='none',2500);}
+  document.getElementById('cart-panel').classList.add('open');
+  document.getElementById('cart-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function removeFromCart(i){
+  cart.splice(i,1);
+  updateCartUI();
+}
+
+function toggleCart(){
+  document.getElementById('cart-panel').classList.toggle('open');
+}
+
+function sendCartOrder(){
+  if(cart.length===0){alert('Корзина пуста!');return;}
+  const name = document.getElementById('global-name').value.trim();
+  const city = document.getElementById('global-city').value.trim();
+  const pvz = document.getElementById('global-pvz').value.trim();
+  if(!name){alert('Введите ваше имя вверху страницы!');document.getElementById('global-name').focus();return;}
+  let msg = `🛒 Новый заказ JaFAD!\n\n👤 Имя: ${name}`;
+  if(city) msg += `\n📍 Город: ${city}`;
+  if(pvz) msg += `\n📦 Пункт выдачи: ${pvz}`;
+  msg += `\n\n━━━━━━━━━━━━━━━━\n`;
+  cart.forEach((item,i) => {
+    msg += `\n${i+1}. ${item.cat}: ${item.model}\n   Цвет: ${item.color} · Размер: ${item.size}`;
+    if(item.link) msg += `\n   Ссылка: ${item.link}`;
+    if(item.comment) msg += `\n   Комментарий: ${item.comment}`;
+    msg += '\n';
+  });
+  msg += `\n━━━━━━━━━━━━━━━━\nВсего товаров: ${cart.length}`;
+  window.open(`https://t.me/AndreyI2009?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// ============ ДОСТАВКА ============
+function saveDelivery(){}
+
+function updateGlobalPVZ(){
+  const city = document.getElementById('global-city').value.trim();
+  const cdek = document.getElementById('global-cdek');
+  const box = document.getElementById('global-boxberry');
+  if(city.length>2){
+    cdek.href=`https://www.cdek.ru/ru/offices/?q=${encodeURIComponent(city)}`;
+    cdek.classList.add('active');
+    box.href=`https://boxberry.ru/find_a_point/?s=${encodeURIComponent(city)}`;
+    box.classList.add('active');
+  } else {
+    cdek.href='https://www.cdek.ru/ru/offices/';cdek.classList.remove('active');
+    box.href='https://boxberry.ru/find_a_point/';box.classList.remove('active');
+  }
+}
+
+// ============ ФОРМЫ ============
+function buildForm(id){
+  const p = CATALOG[id];
+  if(!p) return;
+  const el = document.getElementById(id);
+  if(!el || el.innerHTML.trim()) return;
+  const guide = SIZE_GUIDES[p.sizeType]||SIZE_GUIDES.cloth;
+  const colorsHtml = COLORS.map(c=>`<button class="col-btn" data-color="${c}"><div class="col-dot" style="background:${COLOR_HEX[c]};${c==='White'||c==='Cream'?'border:1px solid #444;':''}"></div>${c}</button>`).join('')
+    +`<label class="col-btn" id="${id}-custom-btn" style="cursor:pointer;"><div class="col-dot" style="background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);"></div>Свой<input type="color" style="position:absolute;opacity:0;width:0;height:0;" oninput="applyCustomColor('${id}',this.value)"></label>`;
+  const sizesHtml = p.sizes.map(s=>`<button class="sz" data-size="${s}">${s}</button>`).join('');
+  const modelsHtml = p.models.map(m=>`<option>${m}</option>`).join('')+`<option value="custom">✏️ Написать свою модель</option>`;
+  el.innerHTML=`<div class="order-card">
+    <div class="field"><label class="field-label">МОДЕЛЬ</label>
+      <select id="${id}-model" onchange="toggleCustom('${id}',this.value)"><option value="">— Выберите модель —</option>${modelsHtml}</select>
+      <div class="custom-model" id="${id}-custom-model"><input type="text" id="${id}-custom-input" placeholder="Введите название..."/></div>
+    </div>
+    <div class="field"><label class="field-label">ССЫЛКА С POIZON (необязательно)</label><input type="text" id="${id}-link" placeholder="https://poizon.com/..."/></div>
+    <div class="field"><label class="field-label">ЦВЕТ</label><div class="colors-row" id="${id}-colors">${colorsHtml}</div></div>
+    <div class="field"><label class="field-label">РАЗМЕР</label>
+      <div class="size-guide"><div class="size-guide-toggle" onclick="toggleGuide('sg-${id}',this)"><span>📏 ПАМЯТКА ПО РАЗМЕРАМ</span><span class="arrow">▼</span></div>
+        <div class="size-guide-table" id="sg-${id}">${guide}</div></div>
+      <div class="sizes-grid">${sizesHtml}</div>
+    </div>
+    <div class="field"><label class="field-label">КОММЕНТАРИЙ К ТОВАРУ (необязательно)</label><textarea id="${id}-comment" placeholder="Пожелания по этому товару..."></textarea></div>
+    <button class="add-cart-btn" onclick="addToCart('${id}')">🛒 Добавить в корзину</button>
+    <div class="added-msg" id="${id}-added"><p>✓ Добавлено в корзину!</p></div>
+  </div>`;
+  bindForm(id);
+}
+
+function bindForm(id){
+  document.querySelectorAll(`#${id} .sz`).forEach(b=>{
+    b.onclick=()=>{document.querySelectorAll(`#${id} .sz`).forEach(x=>x.classList.remove('active'));b.classList.add('active');};
+  });
+  document.querySelectorAll(`#${id} .col-btn:not(label)`).forEach(b=>{
+    b.onclick=()=>{document.querySelectorAll(`#${id} .col-btn`).forEach(x=>x.classList.remove('active'));b.classList.add('active');};
+  });
+  const cb=document.getElementById(`${id}-custom-btn`);
+  if(cb) cb.onclick=e=>{if(e.target.type!=='color') cb.querySelector('input[type=color]').click();};
+}
+
+function toggleCustom(id,val){document.getElementById(`${id}-custom-model`).style.display=val==='custom'?'block':'none';}
+function toggleGuide(id,t){document.getElementById(id).classList.toggle('open');t.classList.toggle('open');}
+function applyCustomColor(id,hex){
+  document.querySelectorAll(`#${id} .col-btn`).forEach(x=>x.classList.remove('active'));
+  const btn=document.getElementById(`${id}-custom-btn`);
+  btn.classList.add('active');btn.dataset.color=hex;btn.querySelector('.col-dot').style.background=hex;
+}
+function switchTab(cat,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+cat).classList.add('active');
+  const first=document.querySelector(`#panel-${cat} .subpanel.active`);
+  if(first) buildForm(first.id);
+}
+function switchSub(cat,sub,el){
+  document.querySelectorAll(`#panel-${cat} .subtab`).forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll(`#panel-${cat} .subpanel`).forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  const panel=document.getElementById(`${cat}-${sub}`);
+  panel.classList.add('active');
+  buildForm(`${cat}-${sub}`);
+}
+
+buildForm('shoes-sneakers');
 </script>
 </body>
 </html>
