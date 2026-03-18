@@ -8,36 +8,37 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
 nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
-.logo{font-size:24px;font-weight:900;letter-spacing:-1px;}
-.logo span{color:#00FEFF;}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px;}.logo span{color:#00FEFF;}
 .nav-links{display:flex;gap:32px;}
-.nav-links a{color:#888;text-decoration:none;font-size:14px;transition:color .2s;}
+.nav-links a{color:#888;text-decoration:none;font-size:14px;}
 .nav-links a:hover{color:#00FEFF;}
 .nav-right{display:flex;align-items:center;gap:12px;}
 .nav-btn{background:#00FEFF;color:#0d0d0d;font-size:13px;font-weight:700;padding:9px 22px;border-radius:24px;text-decoration:none;}
 .cart-btn{position:relative;background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;font-size:13px;font-weight:700;padding:9px 18px;border-radius:24px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;}
 .cart-btn:hover{border-color:#00FEFF;color:#00FEFF;}
-.cart-count{background:#00FEFF;color:#0d0d0d;font-size:11px;font-weight:900;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;display:none;}
+.cart-count{background:#00FEFF;color:#0d0d0d;font-size:11px;font-weight:900;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;}
 .cart-count.visible{display:flex;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-/* DELIVERY BANNER */
-.delivery-bar{background:#0a1a1a;border-bottom:1px solid #00FEFF22;padding:16px 40px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
-.delivery-bar-left{flex:1;min-width:240px;}
+/* DELIVERY BAR */
+.delivery-bar{background:#0a1a1a;border-bottom:1px solid #00FEFF22;padding:16px 40px;}
 .delivery-label{font-size:11px;letter-spacing:3px;color:#00FEFF;margin-bottom:8px;}
 .delivery-inputs{display:flex;gap:10px;flex-wrap:wrap;}
 .delivery-inputs input{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:10px 14px;color:#fff;font-size:14px;outline:none;flex:1;min-width:180px;font-family:Arial,sans-serif;}
 .delivery-inputs input:focus{border-color:#00FEFF;}
-.delivery-pvz-input{width:100%;margin-top:8px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:10px 14px;color:#fff;font-size:14px;outline:none;font-family:Arial,sans-serif;}
-.delivery-pvz-input:focus{border-color:#00FEFF;}
+.delivery-pvz{width:100%;margin-top:8px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:10px 14px;color:#fff;font-size:14px;outline:none;font-family:Arial,sans-serif;}
+.delivery-pvz:focus{border-color:#00FEFF;}
 .pvz-btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
 .pvz-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;border:1px solid #2a2a2a;color:#888;text-decoration:none;font-size:12px;font-weight:700;transition:all .2s;}
-.pvz-btn:hover,.pvz-btn.active{border-color:#00FEFF;color:#00FEFF;}
-.delivery-hint{font-size:11px;color:#555;margin-top:6px;}
+.pvz-btn.active{border-color:#00FEFF;color:#00FEFF;}
+.rate-badge{display:inline-flex;align-items:center;gap:8px;background:#0d2a1a;border:1px solid #00FEFF33;border-radius:20px;padding:6px 14px;margin-top:10px;}
+.rate-dot{width:7px;height:7px;border-radius:50%;background:#00FEFF;animation:pulse 2s infinite;}
+.rate-text{font-size:12px;color:#00FEFF;font-weight:700;}
 
-/* CART PANEL */
+/* CART */
 .cart-panel{display:none;background:#111;border-bottom:2px solid #00FEFF33;padding:24px 40px;}
 .cart-panel.open{display:block;}
-.cart-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.cart-title{font-size:16px;font-weight:700;margin-bottom:16px;}
 .cart-title span{color:#00FEFF;}
 .cart-empty{color:#555;font-size:14px;padding:20px 0;}
 .cart-items{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
@@ -46,12 +47,12 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .cart-item-cat{font-size:10px;letter-spacing:2px;color:#00FEFF;margin-bottom:2px;}
 .cart-item-name{font-size:14px;font-weight:700;}
 .cart-item-details{font-size:12px;color:#666;margin-top:2px;}
-.cart-item-remove{background:transparent;border:1px solid #333;border-radius:8px;color:#666;padding:6px 12px;cursor:pointer;font-size:12px;transition:all .15s;white-space:nowrap;}
+.cart-item-remove{background:transparent;border:1px solid #333;border-radius:8px;color:#666;padding:6px 12px;cursor:pointer;font-size:12px;transition:all .15s;}
 .cart-item-remove:hover{border-color:#e74c3c;color:#e74c3c;}
 .cart-send-btn{background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:16px 32px;font-size:15px;font-weight:900;cursor:pointer;transition:background .2s;}
 .cart-send-btn:hover{background:#00E5E6;}
-.cart-send-btn:disabled{background:#1a2a2a;color:#555;cursor:not-allowed;}
 
+/* HERO */
 .hero{background:#111;padding:60px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:#00FEFF;opacity:.03;}
 .hero-left{flex:1;max-width:520px;}
@@ -69,22 +70,27 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .hero-box{background:#1a1a1a;border:1px solid #222;border-radius:16px;padding:28px;text-align:center;}
 .hero-box-title{font-size:38px;font-weight:900;color:#00FEFF;opacity:.7;letter-spacing:4px;}
 .hero-box-sub{font-size:12px;color:#444;letter-spacing:3px;margin-top:8px;}
+
+/* SECTION */
 .section{padding:50px 40px;}
 .section-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:10px;}
 .section-title{font-size:26px;font-weight:700;margin-bottom:26px;}
 .order-section{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
+
+/* TABS */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
 .tab{padding:11px 20px;border-radius:24px;border:1px solid #2a2a2a;font-size:13px;font-weight:700;color:#666;cursor:pointer;background:transparent;transition:all .2s;display:flex;align-items:center;gap:8px;}
 .tab:hover{border-color:#00FEFF;color:#00FEFF;}
 .tab.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
-.tab-panel{display:none;}
-.tab-panel.active{display:block;}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+.dept{display:none;}.dept.active{display:block;}
 .subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid #1e1e1e;}
 .subtab{padding:7px 16px;border-radius:20px;border:1px solid #222;font-size:12px;font-weight:700;color:#555;cursor:pointer;background:transparent;transition:all .2s;}
 .subtab:hover{border-color:#00FEFF;color:#00FEFF;}
 .subtab.active{background:#1a2a2a;border-color:#00FEFF;color:#00FEFF;}
-.subpanel{display:none;}
-.subpanel.active{display:block;}
+.subpanel{display:none;}.subpanel.active{display:block;}
+
+/* FORM */
 .order-card{background:#111;border:1px solid #1e1e1e;border-radius:20px;padding:36px;max-width:680px;margin:0 auto;}
 .field{margin-bottom:22px;}
 .field-label{font-size:11px;letter-spacing:2px;color:#00FEFF;margin-bottom:9px;display:block;}
@@ -102,22 +108,37 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .col-btn{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:10px;border:1px solid #2a2a2a;cursor:pointer;background:transparent;color:#888;font-size:13px;transition:all .15s;position:relative;}
 .col-btn:hover,.col-btn.active{border-color:#00FEFF;color:#fff;background:#1a1a1a;}
 .col-dot{width:15px;height:15px;border-radius:50%;flex-shrink:0;}
+
+/* SIZE GUIDE */
 .size-guide{background:#0a1a1a;border:1px solid #00FEFF22;border-radius:12px;padding:14px 18px;margin-bottom:14px;}
 .size-guide-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
 .size-guide-toggle span{font-size:11px;letter-spacing:2px;color:#00FEFF;}
-.size-guide-toggle .arrow{font-size:11px;color:#00FEFF;transition:transform .2s;}
-.size-guide-toggle.open .arrow{transform:rotate(180deg);}
+.arrow{font-size:11px;color:#00FEFF;transition:transform .2s;}
+.arrow.open{transform:rotate(180deg);}
 .size-guide-table{display:none;margin-top:12px;overflow-x:auto;}
 .size-guide-table.open{display:block;}
 .size-guide-table table{width:100%;border-collapse:collapse;font-size:12px;}
-.size-guide-table th{color:#00FEFF;padding:5px 8px;border-bottom:1px solid #1e2e2e;text-align:left;letter-spacing:1px;}
+.size-guide-table th{color:#00FEFF;padding:5px 8px;border-bottom:1px solid #1e2e2e;text-align:left;}
 .size-guide-table td{color:#888;padding:5px 8px;border-bottom:1px solid #1a1a1a;}
 .size-guide-table tr:hover td{color:#fff;background:#0d2020;}
 .size-guide-note{font-size:11px;color:#555;margin-top:8px;line-height:1.6;}
+
+/* PRICE CALC */
+.price-result{display:none;margin-top:12px;background:#0a1a1a;border:1px solid #00FEFF33;border-radius:12px;padding:16px;}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.price-row-label{font-size:13px;color:#666;}
+.price-row-val{font-size:13px;color:#aaa;}
+.price-divider{height:1px;background:#1e1e1e;margin:10px 0;}
+.price-total-label{font-size:14px;font-weight:700;color:#fff;}
+.price-total-val{font-size:22px;font-weight:900;color:#00FEFF;}
+.price-note{font-size:11px;color:#555;margin-top:8px;}
+
 .add-cart-btn{width:100%;background:#1a2a2a;color:#00FEFF;border:2px solid #00FEFF;border-radius:28px;padding:16px;font-size:15px;font-weight:900;cursor:pointer;transition:all .2s;margin-top:6px;}
 .add-cart-btn:hover{background:#00FEFF;color:#0d0d0d;}
 .added-msg{display:none;background:#0a2a1a;border:1px solid #00FEFF;border-radius:12px;padding:14px;text-align:center;margin-top:12px;}
 .added-msg p{color:#00FEFF;font-size:14px;font-weight:700;}
+
+/* ABOUT / HOW */
 .about{background:#111;border-bottom:1px solid #1a1a1a;}
 .about-inner{display:flex;gap:60px;align-items:center;flex-wrap:wrap;}
 .about-text{flex:1;min-width:260px;}
@@ -137,8 +158,7 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .tg-btn{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:14px;padding:14px 32px;border-radius:32px;text-decoration:none;display:inline-block;}
 .wa-btn{border:1px solid #333;color:#aaa;font-size:14px;padding:14px 32px;border-radius:32px;text-decoration:none;display:inline-block;}
 footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-logo{font-size:18px;font-weight:900;}
-.footer-logo span{color:#00FEFF;}
+.footer-logo{font-size:18px;font-weight:900;}.footer-logo span{color:#00FEFF;}
 .footer-copy{font-size:12px;color:#444;}
 .footer-tag{font-size:12px;color:#333;}
 .divider{height:1px;background:linear-gradient(to right,transparent,#00FEFF44,transparent);margin:0 40px;}
@@ -162,31 +182,32 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
   </div>
 </nav>
 
-<!-- DELIVERY BAR (глобальный) -->
+<!-- DELIVERY BAR -->
 <div class="delivery-bar">
-  <div class="delivery-bar-left">
-    <div class="delivery-label">📍 АДРЕС ДОСТАВКИ — ПРИМЕНЯЕТСЯ КО ВСЕМ ТОВАРАМ</div>
-    <div class="delivery-inputs">
-      <input type="text" id="global-name" placeholder="Ваше имя..." oninput="saveDelivery()"/>
-      <input type="text" id="global-city" placeholder="Ваш город..." oninput="saveDelivery();updateGlobalPVZ()"/>
-    </div>
-    <div class="pvz-btns">
-      <a id="global-cdek" href="https://www.cdek.ru/ru/offices/" target="_blank" class="pvz-btn">📦 Найти пункт СДЭК</a>
-      <a id="global-boxberry" href="https://boxberry.ru/find_a_point/" target="_blank" class="pvz-btn">📫 Найти пункт Boxberry</a>
-    </div>
-    <input type="text" id="global-pvz" class="delivery-pvz-input" placeholder="Адрес пункта выдачи (вставьте после выбора)..." oninput="saveDelivery()"/>
-    <div class="delivery-hint">💡 Заполните один раз — применится ко всем товарам в корзине</div>
+  <div class="delivery-label">📍 АДРЕС ДОСТАВКИ — ПРИМЕНЯЕТСЯ КО ВСЕМ ТОВАРАМ</div>
+  <div class="delivery-inputs">
+    <input type="text" id="global-name" placeholder="Ваше имя..."/>
+    <input type="text" id="global-city" placeholder="Ваш город..." oninput="updateGlobalPVZ()"/>
+  </div>
+  <div class="pvz-btns">
+    <a id="global-cdek" href="https://www.cdek.ru/ru/offices/" target="_blank" class="pvz-btn">📦 Найти пункт СДЭК</a>
+    <a id="global-boxberry" href="https://boxberry.ru/find_a_point/" target="_blank" class="pvz-btn">📫 Найти пункт Boxberry</a>
+  </div>
+  <input type="text" id="global-pvz" class="delivery-pvz" placeholder="Адрес пункта выдачи (вставьте после выбора)..."/>
+  <div style="font-size:11px;color:#555;margin-top:6px;">💡 Заполните один раз — применится ко всем товарам в корзине</div>
+  <div class="rate-badge">
+    <span class="rate-dot"></span>
+    <span class="rate-text" id="rate-badge">Загружаем курс ¥...</span>
   </div>
 </div>
 
-<!-- CART PANEL -->
+<!-- CART -->
 <div class="cart-panel" id="cart-panel">
   <div class="cart-title">🛒 Корзина <span id="cart-title-count"></span></div>
-  <div id="cart-body">
-    <div class="cart-empty">Корзина пуста — добавьте товары ниже</div>
-  </div>
+  <div id="cart-body"><div class="cart-empty">Корзина пуста — добавьте товары ниже</div></div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-tag">POIZON DELIVERY</div>
@@ -210,18 +231,18 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
   </div>
 </div>
 
+<!-- ORDER -->
 <div class="section order-section" id="order">
   <div class="section-tag">ДОБАВИТЬ В КОРЗИНУ</div>
   <div class="section-title">Выберите отдел</div>
 
-  <!-- ОТДЕЛ -->
   <div class="tabs" style="margin-bottom:12px;">
     <button class="tab active" onclick="switchDept('men',this)" style="font-size:15px;padding:13px 28px;">👨 Мужской</button>
     <button class="tab" onclick="switchDept('women',this)" style="font-size:15px;padding:13px 28px;">👩 Женский</button>
   </div>
 
   <!-- МУЖСКОЙ -->
-  <div id="dept-men">
+  <div class="dept active" id="dept-men">
     <div class="tabs">
       <button class="tab active" onclick="switchTab('men-shoes',this)">👟 Обувь</button>
       <button class="tab" onclick="switchTab('men-pants',this)">👖 Штаны</button>
@@ -290,7 +311,7 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
   </div>
 
   <!-- ЖЕНСКИЙ -->
-  <div id="dept-women" style="display:none;">
+  <div class="dept" id="dept-women">
     <div class="tabs">
       <button class="tab active" onclick="switchTab('women-shoes',this)">👟 Обувь</button>
       <button class="tab" onclick="switchTab('women-pants',this)">👖 Штаны / Леггинсы</button>
@@ -380,7 +401,7 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
   <div class="section-title">Три простых шага</div>
   <div class="steps">
     <div class="step"><div class="step-num">01</div><div class="step-title">Заполните доставку</div><div class="step-desc">Укажите имя, город и пункт выдачи вверху — один раз для всех товаров</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Добавьте товары</div><div class="step-desc">Выбирайте модели, цвета и размеры — добавляйте в корзину</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Добавьте товары</div><div class="step-desc">Выбирайте модели, цвета, размеры и добавляйте в корзину</div></div>
     <div class="step"><div class="step-num">03</div><div class="step-title">Отправьте заказ</div><div class="step-desc">Нажмите «Отправить заказ» в корзине — всё придёт нам в Telegram одним сообщением</div></div>
   </div>
 </div>
@@ -401,9 +422,29 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 </footer>
 
 <script>
-// ============ ДАННЫЕ ============
-const CATALOG = {
-  // МУЖСКОЙ
+// ===== КУРС ЮАНЯ =====
+var CNY_RATE = 11.54;
+
+function fetchRate() {
+  fetch('https://api.exchangerate-api.com/v4/latest/CNY')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.rates && d.rates.RUB){
+        CNY_RATE = Math.round(d.rates.RUB * 100) / 100;
+        var badge = document.getElementById('rate-badge');
+        if(badge){ badge.textContent = '1 ¥ = ' + CNY_RATE + ' ₽ (live)'; }
+      }
+    })
+    .catch(function(){
+      var badge = document.getElementById('rate-badge');
+      if(badge){ badge.textContent = '1 ¥ ≈ ' + CNY_RATE + ' ₽'; }
+    });
+}
+fetchRate();
+setInterval(fetchRate, 5 * 60 * 1000);
+
+// ===== КАТАЛОГ =====
+var CATALOG = {
   'men-shoes-sneakers':{label:'Кроссовки (М)',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','New Balance 574','Adidas Samba OG','Adidas Campus'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
   'men-shoes-boots':{label:'Ботинки (М)',models:['Timberland 6-Inch','Dr. Martens 1460','Nike Boots','Adidas Terrex'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
   'men-shoes-sandals':{label:'Сандалии (М)',models:['Nike Victori One','Adidas Adilette','Yeezy Slide','Jordan Hydro'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
@@ -423,229 +464,264 @@ const CATALOG = {
   'men-underwear-boxers':{label:'Боксеры (М)',models:['Nike Boxers','Jordan Boxers','Adidas Boxers'],sizes:['S','M','L','XL','XXL'],sizeType:'cloth'},
   'men-underwear-briefs':{label:'Брифы (М)',models:['Nike Briefs','Adidas Briefs'],sizes:['S','M','L','XL','XXL'],sizeType:'cloth'},
   'men-underwear-socks':{label:'Носки (М)',models:['Nike Crew Socks','Nike Ankle Socks','Jordan Socks'],sizes:['S (39-42)','L (43-46)'],sizeType:'socks'},
-  // ЖЕНСКИЙ
   'women-shoes-sneakers':{label:'Кроссовки (Ж)',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','Adidas Samba OG','Adidas Stan Smith'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
   'women-shoes-boots':{label:'Ботинки (Ж)',models:['UGG Classic','Dr. Martens 1460','Nike Boots','Timberland'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
   'women-shoes-sandals':{label:'Сандалии (Ж)',models:['Nike Victori One','Adidas Adilette','Yeezy Slide'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
   'women-shoes-loafers':{label:'Лоферы (Ж)',models:['Nike Blazer','New Balance Loafer','Adidas Loafer'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
-  'women-pants-sport':{label:'Спортивные штаны (Ж)',models:['Nike Tech Fleece W','Nike Jogger W','Adidas Track Pants W','Jordan Fleece W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
-  'women-pants-leggings':{label:'Леггинсы',models:['Nike One Leggings','Nike Pro Leggings','Adidas Leggings','Jordan Leggings'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-pants-sport':{label:'Спортивные штаны (Ж)',models:['Nike Tech Fleece W','Nike Jogger W','Adidas Track Pants W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-pants-leggings':{label:'Леггинсы',models:['Nike One Leggings','Nike Pro Leggings','Adidas Leggings'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
   'women-pants-jeans':{label:'Джинсы (Ж)',models:["Levi's 501 W","Levi's 711 Skinny",'Carhartt WIP W'],sizes:['24','25','26','27','28','29','30','32'],sizeType:'jeans'},
   'women-pants-shorts':{label:'Шорты (Ж)',models:['Nike Shorts W','Jordan Shorts W','Adidas Shorts W'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
   'women-hats-caps':{label:'Кепки (Ж)',models:['Nike Swoosh Cap','Adidas Cap W','New Balance Cap W'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
   'women-hats-beanies':{label:'Шапки (Ж)',models:['Nike Beanie W','Adidas Beanie W'],sizes:['One Size'],sizeType:'hat'},
-  'women-hats-bucket':{label:'Панамы (Ж)',models:['Nike Bucket W','Adidas Bucket W','New Balance Bucket W'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'women-hats-bucket':{label:'Панамы (Ж)',models:['Nike Bucket W','Adidas Bucket W'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
   'women-jackets-puffer':{label:'Пуховики (Ж)',models:['Nike Puffer W','Jordan Puffer W','Adidas Puffer W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
-  'women-jackets-bomber':{label:'Бомберы (Ж)',models:['Nike Bomber W','Jordan Bomber W','Adidas Bomber W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-jackets-bomber':{label:'Бомберы (Ж)',models:['Nike Bomber W','Jordan Bomber W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
   'women-jackets-windbreaker':{label:'Ветровки (Ж)',models:['Nike Windrunner W','Adidas Windbreaker W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
   'women-jackets-hoodie':{label:'Худи (Ж)',models:['Nike Tech Fleece Hoodie W','Jordan Hoodie W','Adidas Hoodie W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
   'women-underwear-briefs':{label:'Трусы',models:['Nike Briefs W','Adidas Briefs W'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
   'women-underwear-bra':{label:'Бюстгальтеры',models:['Nike Sport Bra','Nike Dri-FIT Bra','Adidas Sport Bra'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
-  'women-underwear-socks':{label:'Носки (Ж)',models:['Nike Crew Socks W','Nike Ankle Socks W','Adidas Socks W'],sizes:['S (35-38)','M (39-41)'],sizeType:'socks'},
+  'women-underwear-socks':{label:'Носки (Ж)',models:['Nike Crew Socks W','Nike Ankle Socks W'],sizes:['S (35-38)','M (39-41)'],sizeType:'socks'}
 };
 
-const SIZE_GUIDES = {
-  eu:`<table><tr><th>EU</th><th>см</th><th>US M</th><th>US W</th><th>UK</th></tr>
-    <tr><td>36</td><td>22.5</td><td>4</td><td>5.5</td><td>3.5</td></tr><tr><td>37</td><td>23.5</td><td>5</td><td>6.5</td><td>4.5</td></tr>
-    <tr><td>38</td><td>24</td><td>6</td><td>7.5</td><td>5</td></tr><tr><td>39</td><td>25</td><td>7</td><td>8.5</td><td>6</td></tr>
-    <tr><td>40</td><td>25.5</td><td>7.5</td><td>9</td><td>6.5</td></tr><tr><td>41</td><td>26.5</td><td>8.5</td><td>10</td><td>7.5</td></tr>
-    <tr><td>42</td><td>27</td><td>9</td><td>10.5</td><td>8</td></tr><tr><td>43</td><td>27.5</td><td>10</td><td>11.5</td><td>9</td></tr>
-    <tr><td>44</td><td>28.5</td><td>11</td><td>12.5</td><td>10</td></tr><tr><td>45</td><td>29</td><td>11.5</td><td>—</td><td>10.5</td></tr>
-    <tr><td>46</td><td>30</td><td>12.5</td><td>—</td><td>11.5</td></tr></table>
-    <div class="size-guide-note">💡 Измерьте длину стопы. При сомнении — берите больший.</div>`,
-  cloth:`<table><tr><th>Размер</th><th>Грудь (см)</th><th>Талия (см)</th><th>Рост (см)</th></tr>
-    <tr><td>XS</td><td>80-84</td><td>62-66</td><td>158-164</td></tr><tr><td>S</td><td>84-90</td><td>66-72</td><td>164-170</td></tr>
-    <tr><td>M</td><td>90-96</td><td>72-78</td><td>170-176</td></tr><tr><td>L</td><td>96-104</td><td>78-86</td><td>176-182</td></tr>
-    <tr><td>XL</td><td>104-112</td><td>86-94</td><td>182-188</td></tr><tr><td>XXL</td><td>112-120</td><td>94-104</td><td>188-194</td></tr>
-    <tr><td>3XL</td><td>120-130</td><td>104-114</td><td>194+</td></tr></table>
-    <div class="size-guide-note">💡 Измерьте обхват груди. При сомнении — берите больший.</div>`,
-  jeans:`<table><tr><th>Waist</th><th>Талия (см)</th><th>Бёдра (см)</th></tr>
-    <tr><td>28</td><td>71-73</td><td>91-93</td></tr><tr><td>29</td><td>74-76</td><td>94-96</td></tr>
-    <tr><td>30</td><td>77-79</td><td>97-99</td></tr><tr><td>31</td><td>80-82</td><td>100-102</td></tr>
-    <tr><td>32</td><td>83-85</td><td>103-105</td></tr><tr><td>34</td><td>89-91</td><td>109-111</td></tr>
-    <tr><td>36</td><td>92-96</td><td>112-116</td></tr></table>
-    <div class="size-guide-note">💡 Измерьте обхват талии. 1 дюйм = 2.54 см.</div>`,
-  hat:`<table><tr><th>Размер</th><th>Обхват головы (см)</th></tr>
-    <tr><td>S/M</td><td>54-57</td></tr><tr><td>L/XL</td><td>58-61</td></tr><tr><td>One Size</td><td>54-61</td></tr></table>
-    <div class="size-guide-note">💡 Измерьте обхват головы чуть выше ушей.</div>`,
-  socks:`<table><tr><th>Размер</th><th>Размер обуви EU</th></tr>
-    <tr><td>S</td><td>36-38</td></tr><tr><td>M</td><td>39-42</td></tr><tr><td>L</td><td>43-46</td></tr></table>
-    <div class="size-guide-note">💡 Выбирайте по размеру обуви.</div>`,
+var SIZE_GUIDES = {
+  eu:'<table><tr><th>EU</th><th>см</th><th>US M</th><th>US W</th><th>UK</th></tr><tr><td>35</td><td>22</td><td>3</td><td>5</td><td>3</td></tr><tr><td>36</td><td>22.5</td><td>4</td><td>5.5</td><td>3.5</td></tr><tr><td>37</td><td>23.5</td><td>5</td><td>6.5</td><td>4.5</td></tr><tr><td>38</td><td>24</td><td>6</td><td>7.5</td><td>5</td></tr><tr><td>39</td><td>25</td><td>7</td><td>8.5</td><td>6</td></tr><tr><td>40</td><td>25.5</td><td>7.5</td><td>9</td><td>6.5</td></tr><tr><td>41</td><td>26.5</td><td>8.5</td><td>10</td><td>7.5</td></tr><tr><td>42</td><td>27</td><td>9</td><td>10.5</td><td>8</td></tr><tr><td>43</td><td>27.5</td><td>10</td><td>11.5</td><td>9</td></tr><tr><td>44</td><td>28.5</td><td>11</td><td>12.5</td><td>10</td></tr><tr><td>45</td><td>29</td><td>11.5</td><td>—</td><td>10.5</td></tr><tr><td>46</td><td>30</td><td>12.5</td><td>—</td><td>11.5</td></tr></table><div class="size-guide-note">💡 Измерьте длину стопы. При сомнении — берите больший.</div>',
+  cloth:'<table><tr><th>Размер</th><th>Грудь (см)</th><th>Талия (см)</th><th>Рост (см)</th></tr><tr><td>XS</td><td>80-84</td><td>62-66</td><td>158-164</td></tr><tr><td>S</td><td>84-90</td><td>66-72</td><td>164-170</td></tr><tr><td>M</td><td>90-96</td><td>72-78</td><td>170-176</td></tr><tr><td>L</td><td>96-104</td><td>78-86</td><td>176-182</td></tr><tr><td>XL</td><td>104-112</td><td>86-94</td><td>182-188</td></tr><tr><td>XXL</td><td>112-120</td><td>94-104</td><td>188-194</td></tr><tr><td>3XL</td><td>120-130</td><td>104-114</td><td>194+</td></tr></table><div class="size-guide-note">💡 Измерьте обхват груди. При сомнении — берите больший.</div>',
+  jeans:'<table><tr><th>Waist</th><th>Талия (см)</th></tr><tr><td>24</td><td>61-63</td></tr><tr><td>25</td><td>64-66</td></tr><tr><td>26</td><td>67-69</td></tr><tr><td>27</td><td>70-72</td></tr><tr><td>28</td><td>71-73</td></tr><tr><td>29</td><td>74-76</td></tr><tr><td>30</td><td>77-79</td></tr><tr><td>31</td><td>80-82</td></tr><tr><td>32</td><td>83-85</td></tr><tr><td>34</td><td>89-91</td></tr><tr><td>36</td><td>92-96</td></tr></table><div class="size-guide-note">💡 1 дюйм = 2.54 см.</div>',
+  hat:'<table><tr><th>Размер</th><th>Обхват (см)</th></tr><tr><td>S/M</td><td>54-57</td></tr><tr><td>L/XL</td><td>58-61</td></tr><tr><td>One Size</td><td>54-61</td></tr></table><div class="size-guide-note">💡 Измерьте обхват головы выше ушей.</div>',
+  socks:'<table><tr><th>Размер</th><th>EU обуви</th></tr><tr><td>S</td><td>35-38</td></tr><tr><td>M</td><td>39-42</td></tr><tr><td>L</td><td>43-46</td></tr></table>'
 };
 
-const COLORS = ['White','Black','Grey','Red','Blue','Green','Cream','Brown','Navy','Olive'];
-const COLOR_HEX = {White:'#f5f5f0',Black:'#1a1a1a',Grey:'#888',Red:'#c0392b',Blue:'#2980b9',Green:'#27ae60',Cream:'#e8d5b0',Brown:'#8B4513',Navy:'#2c3e50',Olive:'#6b7a30'};
-const COLOR_BORDER = {White:'border:1px solid #444;',Cream:'border:1px solid #444;',White2:'border:1px solid #444;'};
+var COLORS = ['White','Black','Grey','Red','Blue','Green','Cream','Brown','Navy','Olive'];
+var COLOR_HEX = {White:'#f5f5f0',Black:'#1a1a1a',Grey:'#888',Red:'#c0392b',Blue:'#2980b9',Green:'#27ae60',Cream:'#e8d5b0',Brown:'#8B4513',Navy:'#2c3e50',Olive:'#6b7a30'};
 
-// ============ КОРЗИНА ============
-let cart = [];
+// ===== КОРЗИНА =====
+var cart = [];
 
-function updateCartUI(){
-  const count = cart.length;
-  const el = document.getElementById('cart-count');
+function updateCartUI() {
+  var count = cart.length;
+  var el = document.getElementById('cart-count');
   el.textContent = count;
-  el.classList.toggle('visible', count > 0);
-  document.getElementById('cart-title-count').textContent = count > 0 ? `(${count} товара)` : '';
-  const body = document.getElementById('cart-body');
-  if(count === 0){
-    body.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте товары ниже</div>';
-    return;
-  }
-  const itemsHtml = cart.map((item,i) => `
-    <div class="cart-item">
-      <div class="cart-item-info">
-        <div class="cart-item-cat">${item.cat}</div>
-        <div class="cart-item-name">${item.model}</div>
-        <div class="cart-item-details">Цвет: ${item.color} · Размер: ${item.size}${item.link?' · <a href="'+item.link+'" target="_blank" style="color:#00FEFF;">Ссылка</a>':''}</div>
-        ${item.comment?`<div class="cart-item-details" style="color:#555;">💬 ${item.comment}</div>`:''}
-      </div>
-      <button class="cart-item-remove" onclick="removeFromCart(${i})">✕ Удалить</button>
-    </div>`).join('');
-  body.innerHTML = `
-    <div class="cart-items">${itemsHtml}</div>
-    <button class="cart-send-btn" onclick="sendCartOrder()">📨 Отправить весь заказ в Telegram (${count} товара)</button>`;
+  el.className = 'cart-count' + (count > 0 ? ' visible' : '');
+  var total = cart.reduce(function(s,i){ return s + (i.totalPrice||0); }, 0);
+  document.getElementById('cart-title-count').textContent = count > 0 ? '(' + count + ' тов. · ' + total.toLocaleString('ru-RU') + ' ₽)' : '';
+  var body = document.getElementById('cart-body');
+  if(count === 0){ body.innerHTML = '<div class="cart-empty">Корзина пуста — добавьте товары ниже</div>'; return; }
+  var html = '<div class="cart-items">';
+  cart.forEach(function(item, i){
+    html += '<div class="cart-item"><div class="cart-item-info">';
+    html += '<div class="cart-item-cat">' + item.cat + '</div>';
+    html += '<div class="cart-item-name">' + item.model + '</div>';
+    html += '<div class="cart-item-details">Цвет: ' + item.color + ' · Размер: ' + item.size;
+    if(item.totalPrice) html += ' · <span style="color:#00FEFF;font-weight:700;">' + item.totalPrice.toLocaleString('ru-RU') + ' ₽</span>';
+    html += '</div>';
+    if(item.comment) html += '<div class="cart-item-details" style="color:#555;">💬 ' + item.comment + '</div>';
+    html += '</div><button class="cart-item-remove" onclick="removeFromCart(' + i + ')">✕ Удалить</button></div>';
+  });
+  html += '</div><button class="cart-send-btn" onclick="sendCartOrder()">📨 Отправить весь заказ в Telegram (' + count + ' тов.)</button>';
+  body.innerHTML = html;
 }
 
-function addToCart(id){
-  const p = CATALOG[id];
-  const sel = document.getElementById(`${id}-model`)?.value||'';
-  const custom = document.getElementById(`${id}-custom-input`)?.value||'';
-  const model = sel==='custom'?(custom||''):sel;
-  const link = document.getElementById(`${id}-link`)?.value||'';
-  const comment = document.getElementById(`${id}-comment`)?.value||'';
-  const size = document.querySelector(`#${id} .sz.active`)?.dataset.size||'не выбран';
-  const color = document.querySelector(`#${id} .col-btn.active`)?.dataset.color||'не выбран';
-  if(!model){alert('Выберите или введите модель!');return;}
-  cart.push({cat:p.label,model,color,size,link,comment});
+function addToCart(id) {
+  var p = CATALOG[id];
+  if(!p) return;
+  var selEl = document.getElementById(id + '-model');
+  var sel = selEl ? selEl.value : '';
+  var customEl = document.getElementById(id + '-custom-input');
+  var custom = customEl ? customEl.value : '';
+  var model = sel === 'custom' ? (custom || '') : sel;
+  var linkEl = document.getElementById(id + '-link');
+  var link = linkEl ? linkEl.value : '';
+  var commentEl = document.getElementById(id + '-comment');
+  var comment = commentEl ? commentEl.value : '';
+  var sizeEl = document.querySelector('#' + id + ' .sz.active');
+  var size = sizeEl ? sizeEl.dataset.size : 'не выбран';
+  var colorEl = document.querySelector('#' + id + ' .col-btn.active');
+  var color = colorEl ? colorEl.dataset.color : 'не выбран';
+  var cnyEl = document.getElementById(id + '-cny');
+  var cny = cnyEl ? (parseFloat(cnyEl.value) || 0) : 0;
+  var rubPrice = cny > 0 ? Math.round(cny * CNY_RATE) : 0;
+  var totalPrice = rubPrice > 0 ? Math.round(rubPrice * 1.10) : 0;
+  if(!model) { alert('Выберите или введите модель!'); return; }
+  cart.push({cat:p.label, model:model, color:color, size:size, link:link, comment:comment, cny:cny, rubPrice:rubPrice, totalPrice:totalPrice});
   updateCartUI();
-  const msg = document.getElementById(`${id}-added`);
-  if(msg){msg.style.display='block';setTimeout(()=>msg.style.display='none',2500);}
+  var msg = document.getElementById(id + '-added');
+  if(msg){ msg.style.display = 'block'; setTimeout(function(){ msg.style.display = 'none'; }, 2500); }
   document.getElementById('cart-panel').classList.add('open');
-  document.getElementById('cart-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function removeFromCart(i){
-  cart.splice(i,1);
+function removeFromCart(i) {
+  cart.splice(i, 1);
   updateCartUI();
 }
 
-function toggleCart(){
+function toggleCart() {
   document.getElementById('cart-panel').classList.toggle('open');
 }
 
-function sendCartOrder(){
-  if(cart.length===0){alert('Корзина пуста!');return;}
-  const name = document.getElementById('global-name').value.trim();
-  const city = document.getElementById('global-city').value.trim();
-  const pvz = document.getElementById('global-pvz').value.trim();
-  if(!name){alert('Введите ваше имя вверху страницы!');document.getElementById('global-name').focus();return;}
-  let msg = `🛒 Новый заказ JaFAD!\n\n👤 Имя: ${name}`;
-  if(city) msg += `\n📍 Город: ${city}`;
-  if(pvz) msg += `\n📦 Пункт выдачи: ${pvz}`;
-  msg += `\n\n━━━━━━━━━━━━━━━━\n`;
-  cart.forEach((item,i) => {
-    msg += `\n${i+1}. ${item.cat}: ${item.model}\n   Цвет: ${item.color} · Размер: ${item.size}`;
-    if(item.link) msg += `\n   Ссылка: ${item.link}`;
-    if(item.comment) msg += `\n   Комментарий: ${item.comment}`;
+function sendCartOrder() {
+  if(cart.length === 0){ alert('Корзина пуста!'); return; }
+  var name = document.getElementById('global-name').value.trim();
+  var city = document.getElementById('global-city').value.trim();
+  var pvz = document.getElementById('global-pvz').value.trim();
+  if(!name){ alert('Введите ваше имя вверху страницы!'); document.getElementById('global-name').focus(); return; }
+  var totalOrder = cart.reduce(function(s,i){ return s + (i.totalPrice||0); }, 0);
+  var msg = '🛒 Новый заказ JaFAD!\n\n👤 Имя: ' + name;
+  if(city) msg += '\n📍 Город: ' + city;
+  if(pvz) msg += '\n📦 Пункт выдачи: ' + pvz;
+  msg += '\n\n━━━━━━━━━━━━━━━━\n';
+  cart.forEach(function(item, i){
+    msg += '\n' + (i+1) + '. ' + item.cat + ': ' + item.model;
+    msg += '\n   Цвет: ' + item.color + ' · Размер: ' + item.size;
+    if(item.cny) msg += '\n   Цена Poizon: ' + item.cny + ' ¥ → ' + item.rubPrice.toLocaleString('ru-RU') + ' ₽ → Итого: ' + item.totalPrice.toLocaleString('ru-RU') + ' ₽';
+    if(item.link) msg += '\n   Ссылка: ' + item.link;
+    if(item.comment) msg += '\n   Комментарий: ' + item.comment;
     msg += '\n';
   });
-  msg += `\n━━━━━━━━━━━━━━━━\nВсего товаров: ${cart.length}`;
-  window.open(`https://t.me/AndreyI2009?text=${encodeURIComponent(msg)}`,'_blank');
+  msg += '\n━━━━━━━━━━━━━━━━\nВсего товаров: ' + cart.length;
+  if(totalOrder > 0) msg += '\nОбщая сумма: ' + totalOrder.toLocaleString('ru-RU') + ' ₽ (без доставки)';
+  window.open('https://t.me/AndreyI2009?text=' + encodeURIComponent(msg), '_blank');
 }
 
-// ============ ДОСТАВКА ============
-function saveDelivery(){}
-
-function updateGlobalPVZ(){
-  const city = document.getElementById('global-city').value.trim();
-  const cdek = document.getElementById('global-cdek');
-  const box = document.getElementById('global-boxberry');
-  if(city.length>2){
-    cdek.href=`https://www.cdek.ru/ru/offices/?q=${encodeURIComponent(city)}`;
+// ===== ДОСТАВКА =====
+function updateGlobalPVZ() {
+  var city = document.getElementById('global-city').value.trim();
+  var cdek = document.getElementById('global-cdek');
+  var box = document.getElementById('global-boxberry');
+  if(city.length > 2){
+    cdek.href = 'https://www.cdek.ru/ru/offices/?q=' + encodeURIComponent(city);
     cdek.classList.add('active');
-    box.href=`https://boxberry.ru/find_a_point/?s=${encodeURIComponent(city)}`;
+    box.href = 'https://boxberry.ru/find_a_point/?s=' + encodeURIComponent(city);
     box.classList.add('active');
   } else {
-    cdek.href='https://www.cdek.ru/ru/offices/';cdek.classList.remove('active');
-    box.href='https://boxberry.ru/find_a_point/';box.classList.remove('active');
+    cdek.href = 'https://www.cdek.ru/ru/offices/'; cdek.classList.remove('active');
+    box.href = 'https://boxberry.ru/find_a_point/'; box.classList.remove('active');
   }
 }
 
-// ============ ФОРМЫ ============
-function buildForm(id){
-  const p = CATALOG[id];
+// ===== КАЛЬКУЛЯТОР =====
+function calcPrice(id) {
+  var cnyEl = document.getElementById(id + '-cny');
+  var cny = cnyEl ? (parseFloat(cnyEl.value) || 0) : 0;
+  var result = document.getElementById(id + '-price-result');
+  if(!result) return;
+  if(cny <= 0){ result.style.display = 'none'; return; }
+  var rate = CNY_RATE;
+  var rub = Math.round(cny * rate);
+  var markup = Math.round(rub * 0.10);
+  var total = rub + markup;
+  result.style.display = 'block';
+  document.getElementById(id + '-pr-cny').textContent = cny.toLocaleString('ru-RU') + ' ¥';
+  document.getElementById(id + '-pr-rate').textContent = '1 ¥ = ' + rate.toFixed(2) + ' ₽';
+  document.getElementById(id + '-pr-rub').textContent = rub.toLocaleString('ru-RU') + ' ₽';
+  document.getElementById(id + '-pr-markup').textContent = '+' + markup.toLocaleString('ru-RU') + ' ₽';
+  document.getElementById(id + '-pr-total').textContent = total.toLocaleString('ru-RU') + ' ₽';
+}
+
+// ===== ФОРМЫ =====
+function buildForm(id) {
+  var p = CATALOG[id];
   if(!p) return;
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   if(!el || el.innerHTML.trim()) return;
-  const guide = SIZE_GUIDES[p.sizeType]||SIZE_GUIDES.cloth;
-  const colorsHtml = COLORS.map(c=>`<button class="col-btn" data-color="${c}"><div class="col-dot" style="background:${COLOR_HEX[c]};${c==='White'||c==='Cream'?'border:1px solid #444;':''}"></div>${c}</button>`).join('')
-    +`<label class="col-btn" id="${id}-custom-btn" style="cursor:pointer;"><div class="col-dot" style="background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);"></div>Свой<input type="color" style="position:absolute;opacity:0;width:0;height:0;" oninput="applyCustomColor('${id}',this.value)"></label>`;
-  const sizesHtml = p.sizes.map(s=>`<button class="sz" data-size="${s}">${s}</button>`).join('');
-  const modelsHtml = p.models.map(m=>`<option>${m}</option>`).join('')+`<option value="custom">✏️ Написать свою модель</option>`;
-  el.innerHTML=`<div class="order-card">
-    <div class="field"><label class="field-label">МОДЕЛЬ</label>
-      <select id="${id}-model" onchange="toggleCustom('${id}',this.value)"><option value="">— Выберите модель —</option>${modelsHtml}</select>
-      <div class="custom-model" id="${id}-custom-model"><input type="text" id="${id}-custom-input" placeholder="Введите название..."/></div>
-    </div>
-    <div class="field"><label class="field-label">ССЫЛКА С POIZON (необязательно)</label><input type="text" id="${id}-link" placeholder="https://poizon.com/..."/></div>
-    <div class="field"><label class="field-label">ЦВЕТ</label><div class="colors-row" id="${id}-colors">${colorsHtml}</div></div>
-    <div class="field"><label class="field-label">РАЗМЕР</label>
-      <div class="size-guide"><div class="size-guide-toggle" onclick="toggleGuide('sg-${id}',this)"><span>📏 ПАМЯТКА ПО РАЗМЕРАМ</span><span class="arrow">▼</span></div>
-        <div class="size-guide-table" id="sg-${id}">${guide}</div></div>
-      <div class="sizes-grid">${sizesHtml}</div>
-    </div>
-    <div class="field"><label class="field-label">КОММЕНТАРИЙ К ТОВАРУ (необязательно)</label><textarea id="${id}-comment" placeholder="Пожелания по этому товару..."></textarea></div>
-    <button class="add-cart-btn" onclick="addToCart('${id}')">🛒 Добавить в корзину</button>
-    <div class="added-msg" id="${id}-added"><p>✓ Добавлено в корзину!</p></div>
-  </div>`;
+  var guide = SIZE_GUIDES[p.sizeType] || SIZE_GUIDES.cloth;
+  var colorsHtml = COLORS.map(function(c){
+    var border = (c==='White'||c==='Cream') ? 'border:1px solid #444;' : '';
+    return '<button class="col-btn" data-color="' + c + '"><div class="col-dot" style="background:' + COLOR_HEX[c] + ';' + border + '"></div>' + c + '</button>';
+  }).join('');
+  colorsHtml += '<label class="col-btn" id="' + id + '-custom-btn" style="cursor:pointer;"><div class="col-dot" style="background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);"></div>Свой<input type="color" style="position:absolute;opacity:0;width:0;height:0;" oninput="applyCustomColor(\'' + id + '\',this.value)"></label>';
+  var sizesHtml = p.sizes.map(function(s){ return '<button class="sz" data-size="' + s + '">' + s + '</button>'; }).join('');
+  var modelsHtml = p.models.map(function(m){ return '<option>' + m + '</option>'; }).join('') + '<option value="custom">✏️ Написать свою модель</option>';
+
+  el.innerHTML = '<div class="order-card">'
+    + '<div class="field"><label class="field-label">МОДЕЛЬ</label>'
+    + '<select id="' + id + '-model" onchange="toggleCustom(\'' + id + '\',this.value)"><option value="">— Выберите модель —</option>' + modelsHtml + '</select>'
+    + '<div class="custom-model" id="' + id + '-custom-model"><input type="text" id="' + id + '-custom-input" placeholder="Введите название..."/></div></div>'
+    + '<div class="field"><label class="field-label">ССЫЛКА С POIZON (необязательно)</label><input type="text" id="' + id + '-link" placeholder="https://poizon.com/..."/></div>'
+    + '<div class="field"><label class="field-label">ЦВЕТ</label><div class="colors-row">' + colorsHtml + '</div></div>'
+    + '<div class="field"><label class="field-label">РАЗМЕР</label>'
+    + '<div class="size-guide"><div class="size-guide-toggle" onclick="toggleGuide(\'' + id + '-guide\',this)"><span>📏 ПАМЯТКА ПО РАЗМЕРАМ</span><span class="arrow">▼</span></div>'
+    + '<div class="size-guide-table" id="' + id + '-guide">' + guide + '</div></div>'
+    + '<div class="sizes-grid">' + sizesHtml + '</div></div>'
+    + '<div class="field"><label class="field-label">ЦЕНА НА POIZON (¥ юань)</label>'
+    + '<input type="number" id="' + id + '-cny" placeholder="Введите цену в юанях ¥..." oninput="calcPrice(\'' + id + '\')" min="0"/>'
+    + '<div class="price-result" id="' + id + '-price-result">'
+    + '<div class="price-row"><span class="price-row-label">Цена на Poizon:</span><span class="price-row-val" id="' + id + '-pr-cny"></span></div>'
+    + '<div class="price-row"><span class="price-row-label">Курс:</span><span class="price-row-val" id="' + id + '-pr-rate"></span></div>'
+    + '<div class="price-row"><span class="price-row-label">В рублях:</span><span class="price-row-val" id="' + id + '-pr-rub"></span></div>'
+    + '<div class="price-row"><span class="price-row-label">Наценка (10%):</span><span class="price-row-val" id="' + id + '-pr-markup"></span></div>'
+    + '<div class="price-divider"></div>'
+    + '<div class="price-row"><span class="price-total-label">Итого с вас:</span><span class="price-total-val" id="' + id + '-pr-total"></span></div>'
+    + '<div class="price-note">💡 Стоимость доставки уточняется отдельно</div></div></div>'
+    + '<div class="field"><label class="field-label">КОММЕНТАРИЙ (необязательно)</label><textarea id="' + id + '-comment" placeholder="Пожелания по этому товару..."></textarea></div>'
+    + '<button class="add-cart-btn" onclick="addToCart(\'' + id + '\')">🛒 Добавить в корзину</button>'
+    + '<div class="added-msg" id="' + id + '-added"><p>✓ Добавлено в корзину!</p></div>'
+    + '</div>';
+
   bindForm(id);
 }
 
-function bindForm(id){
-  document.querySelectorAll(`#${id} .sz`).forEach(b=>{
-    b.onclick=()=>{document.querySelectorAll(`#${id} .sz`).forEach(x=>x.classList.remove('active'));b.classList.add('active');};
+function bindForm(id) {
+  document.querySelectorAll('#' + id + ' .sz').forEach(function(b){
+    b.onclick = function(){ document.querySelectorAll('#' + id + ' .sz').forEach(function(x){ x.classList.remove('active'); }); b.classList.add('active'); };
   });
-  document.querySelectorAll(`#${id} .col-btn:not(label)`).forEach(b=>{
-    b.onclick=()=>{document.querySelectorAll(`#${id} .col-btn`).forEach(x=>x.classList.remove('active'));b.classList.add('active');};
+  document.querySelectorAll('#' + id + ' .col-btn:not(label)').forEach(function(b){
+    b.onclick = function(){ document.querySelectorAll('#' + id + ' .col-btn').forEach(function(x){ x.classList.remove('active'); }); b.classList.add('active'); };
   });
-  const cb=document.getElementById(`${id}-custom-btn`);
-  if(cb) cb.onclick=e=>{if(e.target.type!=='color') cb.querySelector('input[type=color]').click();};
+  var cb = document.getElementById(id + '-custom-btn');
+  if(cb) cb.onclick = function(e){ if(e.target.type !== 'color') cb.querySelector('input[type=color]').click(); };
 }
 
-function toggleCustom(id,val){document.getElementById(`${id}-custom-model`).style.display=val==='custom'?'block':'none';}
-function toggleGuide(id,t){document.getElementById(id).classList.toggle('open');t.classList.toggle('open');}
-function applyCustomColor(id,hex){
-  document.querySelectorAll(`#${id} .col-btn`).forEach(x=>x.classList.remove('active'));
-  const btn=document.getElementById(`${id}-custom-btn`);
-  btn.classList.add('active');btn.dataset.color=hex;btn.querySelector('.col-dot').style.background=hex;
+function toggleCustom(id, val) {
+  var el = document.getElementById(id + '-custom-model');
+  if(el) el.style.display = val === 'custom' ? 'block' : 'none';
 }
-function switchDept(dept, el){
-  document.querySelectorAll('.tabs button[onclick^="switchDept"]').forEach(t=>t.classList.remove('active'));
+
+function toggleGuide(id, toggle) {
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.classList.toggle('open');
+  var arr = toggle.querySelector('.arrow');
+  if(arr) arr.classList.toggle('open');
+}
+
+function applyCustomColor(id, hex) {
+  document.querySelectorAll('#' + id + ' .col-btn').forEach(function(x){ x.classList.remove('active'); });
+  var btn = document.getElementById(id + '-custom-btn');
+  if(btn){ btn.classList.add('active'); btn.dataset.color = hex; btn.querySelector('.col-dot').style.background = hex; }
+}
+
+function switchDept(dept, el) {
+  document.querySelectorAll('.dept').forEach(function(d){ d.classList.remove('active'); });
+  document.getElementById('dept-' + dept).classList.add('active');
+  document.querySelectorAll('.tabs button[onclick^="switchDept"]').forEach(function(t){ t.classList.remove('active'); });
   el.classList.add('active');
-  document.getElementById('dept-men').style.display = dept==='men'?'block':'none';
-  document.getElementById('dept-women').style.display = dept==='women'?'block':'none';
-  const firstId = dept==='men' ? 'men-shoes-sneakers' : 'women-shoes-sneakers';
+  var firstId = dept === 'men' ? 'men-shoes-sneakers' : 'women-shoes-sneakers';
   buildForm(firstId);
 }
 
-function switchTab(cat,el){
-  const dept = cat.startsWith('women') ? 'women' : 'men';
-  document.querySelectorAll(`#dept-${dept} .tab`).forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll(`#dept-${dept} .tab-panel`).forEach(p=>p.classList.remove('active'));
+function switchTab(cat, el) {
+  var dept = cat.startsWith('women') ? 'dept-women' : 'dept-men';
+  document.querySelectorAll('#' + dept + ' .tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('#' + dept + ' .tab-panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
-  document.getElementById('panel-'+cat).classList.add('active');
-  const first=document.querySelector(`#panel-${cat} .subpanel.active`);
+  var panel = document.getElementById('panel-' + cat);
+  if(panel) panel.classList.add('active');
+  var first = panel ? panel.querySelector('.subpanel.active') : null;
   if(first) buildForm(first.id);
 }
-function switchSub(cat,sub,el){
-  document.querySelectorAll(`#panel-${cat} .subtab`).forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll(`#panel-${cat} .subpanel`).forEach(p=>p.classList.remove('active'));
+
+function switchSub(cat, sub, el) {
+  var dept = cat.startsWith('women') ? 'dept-women' : 'dept-men';
+  document.querySelectorAll('#panel-' + cat + ' .subtab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('#panel-' + cat + ' .subpanel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
-  const panel=document.getElementById(`${cat}-${sub}`);
-  panel.classList.add('active');
-  buildForm(`${cat}-${sub}`);
+  var panel = document.getElementById(cat + '-' + sub);
+  if(panel) panel.classList.add('active');
+  buildForm(cat + '-' + sub);
 }
 
+// Инициализация
 buildForm('men-shoes-sneakers');
 </script>
 </body>
