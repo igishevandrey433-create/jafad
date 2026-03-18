@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<script src="config.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JaFAD — Доставка с Poizon</title>
@@ -484,8 +483,8 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 
 <script>
 // ===== TELEGRAM BOT =====
-var TG_TOKEN = '8639881516:AAEYtImyWHuuAEe2qDGu1HanKs7Fu3S6xrA';
-var TG_CHAT = '8639881516';
+var TG_TOKEN = window.TG_TOKEN || '';
+var TG_CHAT = window.TG_CHAT || '6975821575';
 
 function sendToTelegram(msg, onSuccess) {
   fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
