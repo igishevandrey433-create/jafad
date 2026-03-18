@@ -212,76 +212,148 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 
 <div class="section order-section" id="order">
   <div class="section-tag">ДОБАВИТЬ В КОРЗИНУ</div>
-  <div class="section-title">Выберите категорию</div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('shoes',this)">👟 Обувь</button>
-    <button class="tab" onclick="switchTab('pants',this)">👖 Штаны</button>
-    <button class="tab" onclick="switchTab('hats',this)">🧢 Головные уборы</button>
-    <button class="tab" onclick="switchTab('jackets',this)">🧥 Куртки</button>
-    <button class="tab" onclick="switchTab('underwear',this)">🩲 Нижнее бельё</button>
+  <div class="section-title">Выберите отдел</div>
+
+  <!-- ОТДЕЛ -->
+  <div class="tabs" style="margin-bottom:12px;">
+    <button class="tab active" onclick="switchDept('men',this)" style="font-size:15px;padding:13px 28px;">👨 Мужской</button>
+    <button class="tab" onclick="switchDept('women',this)" style="font-size:15px;padding:13px 28px;">👩 Женский</button>
   </div>
 
-  <div class="tab-panel active" id="panel-shoes">
-    <div class="subtabs">
-      <button class="subtab active" onclick="switchSub('shoes','sneakers',this)">👟 Кроссовки</button>
-      <button class="subtab" onclick="switchSub('shoes','boots',this)">🥾 Ботинки</button>
-      <button class="subtab" onclick="switchSub('shoes','sandals',this)">🩴 Сандалии</button>
-      <button class="subtab" onclick="switchSub('shoes','loafers',this)">👞 Лоферы</button>
+  <!-- МУЖСКОЙ -->
+  <div id="dept-men">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('men-shoes',this)">👟 Обувь</button>
+      <button class="tab" onclick="switchTab('men-pants',this)">👖 Штаны</button>
+      <button class="tab" onclick="switchTab('men-hats',this)">🧢 Головные уборы</button>
+      <button class="tab" onclick="switchTab('men-jackets',this)">🧥 Куртки</button>
+      <button class="tab" onclick="switchTab('men-underwear',this)">🩲 Нижнее бельё</button>
     </div>
-    <div class="subpanel active" id="shoes-sneakers"></div>
-    <div class="subpanel" id="shoes-boots"></div>
-    <div class="subpanel" id="shoes-sandals"></div>
-    <div class="subpanel" id="shoes-loafers"></div>
+    <div class="tab-panel active" id="panel-men-shoes">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('men-shoes','sneakers',this)">👟 Кроссовки</button>
+        <button class="subtab" onclick="switchSub('men-shoes','boots',this)">🥾 Ботинки</button>
+        <button class="subtab" onclick="switchSub('men-shoes','sandals',this)">🩴 Сандалии</button>
+        <button class="subtab" onclick="switchSub('men-shoes','loafers',this)">👞 Лоферы</button>
+      </div>
+      <div class="subpanel active" id="men-shoes-sneakers"></div>
+      <div class="subpanel" id="men-shoes-boots"></div>
+      <div class="subpanel" id="men-shoes-sandals"></div>
+      <div class="subpanel" id="men-shoes-loafers"></div>
+    </div>
+    <div class="tab-panel" id="panel-men-pants">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('men-pants','sport',this)">🏃 Спортивные</button>
+        <button class="subtab" onclick="switchSub('men-pants','jeans',this)">👖 Джинсы</button>
+        <button class="subtab" onclick="switchSub('men-pants','cargo',this)">🪖 Карго</button>
+        <button class="subtab" onclick="switchSub('men-pants','shorts',this)">🩳 Шорты</button>
+      </div>
+      <div class="subpanel active" id="men-pants-sport"></div>
+      <div class="subpanel" id="men-pants-jeans"></div>
+      <div class="subpanel" id="men-pants-cargo"></div>
+      <div class="subpanel" id="men-pants-shorts"></div>
+    </div>
+    <div class="tab-panel" id="panel-men-hats">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('men-hats','caps',this)">🧢 Кепки</button>
+        <button class="subtab" onclick="switchSub('men-hats','beanies',this)">🎿 Шапки</button>
+        <button class="subtab" onclick="switchSub('men-hats','bucket',this)">🪣 Панамы</button>
+        <button class="subtab" onclick="switchSub('men-hats','bandana',this)">🫱 Банданы</button>
+      </div>
+      <div class="subpanel active" id="men-hats-caps"></div>
+      <div class="subpanel" id="men-hats-beanies"></div>
+      <div class="subpanel" id="men-hats-bucket"></div>
+      <div class="subpanel" id="men-hats-bandana"></div>
+    </div>
+    <div class="tab-panel" id="panel-men-jackets">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('men-jackets','puffer',this)">🫧 Пуховики</button>
+        <button class="subtab" onclick="switchSub('men-jackets','bomber',this)">✈️ Бомберы</button>
+        <button class="subtab" onclick="switchSub('men-jackets','windbreaker',this)">💨 Ветровки</button>
+        <button class="subtab" onclick="switchSub('men-jackets','hoodie',this)">👕 Худи</button>
+      </div>
+      <div class="subpanel active" id="men-jackets-puffer"></div>
+      <div class="subpanel" id="men-jackets-bomber"></div>
+      <div class="subpanel" id="men-jackets-windbreaker"></div>
+      <div class="subpanel" id="men-jackets-hoodie"></div>
+    </div>
+    <div class="tab-panel" id="panel-men-underwear">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('men-underwear','boxers',this)">🩲 Боксеры</button>
+        <button class="subtab" onclick="switchSub('men-underwear','briefs',this)">🩳 Брифы</button>
+        <button class="subtab" onclick="switchSub('men-underwear','socks',this)">🧦 Носки</button>
+      </div>
+      <div class="subpanel active" id="men-underwear-boxers"></div>
+      <div class="subpanel" id="men-underwear-briefs"></div>
+      <div class="subpanel" id="men-underwear-socks"></div>
+    </div>
   </div>
 
-  <div class="tab-panel" id="panel-pants">
-    <div class="subtabs">
-      <button class="subtab active" onclick="switchSub('pants','sport',this)">🏃 Спортивные</button>
-      <button class="subtab" onclick="switchSub('pants','jeans',this)">👖 Джинсы</button>
-      <button class="subtab" onclick="switchSub('pants','cargo',this)">🪖 Карго</button>
-      <button class="subtab" onclick="switchSub('pants','shorts',this)">🩳 Шорты</button>
+  <!-- ЖЕНСКИЙ -->
+  <div id="dept-women" style="display:none;">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('women-shoes',this)">👟 Обувь</button>
+      <button class="tab" onclick="switchTab('women-pants',this)">👖 Штаны / Леггинсы</button>
+      <button class="tab" onclick="switchTab('women-hats',this)">🧢 Головные уборы</button>
+      <button class="tab" onclick="switchTab('women-jackets',this)">🧥 Куртки</button>
+      <button class="tab" onclick="switchTab('women-underwear',this)">🩲 Нижнее бельё</button>
     </div>
-    <div class="subpanel active" id="pants-sport"></div>
-    <div class="subpanel" id="pants-jeans"></div>
-    <div class="subpanel" id="pants-cargo"></div>
-    <div class="subpanel" id="pants-shorts"></div>
-  </div>
-
-  <div class="tab-panel" id="panel-hats">
-    <div class="subtabs">
-      <button class="subtab active" onclick="switchSub('hats','caps',this)">🧢 Кепки</button>
-      <button class="subtab" onclick="switchSub('hats','beanies',this)">🎿 Шапки</button>
-      <button class="subtab" onclick="switchSub('hats','bucket',this)">🪣 Панамы</button>
-      <button class="subtab" onclick="switchSub('hats','bandana',this)">🫱 Банданы</button>
+    <div class="tab-panel active" id="panel-women-shoes">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('women-shoes','sneakers',this)">👟 Кроссовки</button>
+        <button class="subtab" onclick="switchSub('women-shoes','boots',this)">🥾 Ботинки</button>
+        <button class="subtab" onclick="switchSub('women-shoes','sandals',this)">🩴 Сандалии</button>
+        <button class="subtab" onclick="switchSub('women-shoes','loafers',this)">👞 Лоферы</button>
+      </div>
+      <div class="subpanel active" id="women-shoes-sneakers"></div>
+      <div class="subpanel" id="women-shoes-boots"></div>
+      <div class="subpanel" id="women-shoes-sandals"></div>
+      <div class="subpanel" id="women-shoes-loafers"></div>
     </div>
-    <div class="subpanel active" id="hats-caps"></div>
-    <div class="subpanel" id="hats-beanies"></div>
-    <div class="subpanel" id="hats-bucket"></div>
-    <div class="subpanel" id="hats-bandana"></div>
-  </div>
-
-  <div class="tab-panel" id="panel-jackets">
-    <div class="subtabs">
-      <button class="subtab active" onclick="switchSub('jackets','puffer',this)">🫧 Пуховики</button>
-      <button class="subtab" onclick="switchSub('jackets','bomber',this)">✈️ Бомберы</button>
-      <button class="subtab" onclick="switchSub('jackets','windbreaker',this)">💨 Ветровки</button>
-      <button class="subtab" onclick="switchSub('jackets','hoodie',this)">👕 Худи</button>
+    <div class="tab-panel" id="panel-women-pants">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('women-pants','sport',this)">🏃 Спортивные</button>
+        <button class="subtab" onclick="switchSub('women-pants','leggings',this)">🩱 Леггинсы</button>
+        <button class="subtab" onclick="switchSub('women-pants','jeans',this)">👖 Джинсы</button>
+        <button class="subtab" onclick="switchSub('women-pants','shorts',this)">🩳 Шорты</button>
+      </div>
+      <div class="subpanel active" id="women-pants-sport"></div>
+      <div class="subpanel" id="women-pants-leggings"></div>
+      <div class="subpanel" id="women-pants-jeans"></div>
+      <div class="subpanel" id="women-pants-shorts"></div>
     </div>
-    <div class="subpanel active" id="jackets-puffer"></div>
-    <div class="subpanel" id="jackets-bomber"></div>
-    <div class="subpanel" id="jackets-windbreaker"></div>
-    <div class="subpanel" id="jackets-hoodie"></div>
-  </div>
-
-  <div class="tab-panel" id="panel-underwear">
-    <div class="subtabs">
-      <button class="subtab active" onclick="switchSub('underwear','boxers',this)">🩲 Боксеры</button>
-      <button class="subtab" onclick="switchSub('underwear','briefs',this)">🩳 Брифы</button>
-      <button class="subtab" onclick="switchSub('underwear','socks',this)">🧦 Носки</button>
+    <div class="tab-panel" id="panel-women-hats">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('women-hats','caps',this)">🧢 Кепки</button>
+        <button class="subtab" onclick="switchSub('women-hats','beanies',this)">🎿 Шапки</button>
+        <button class="subtab" onclick="switchSub('women-hats','bucket',this)">🪣 Панамы</button>
+      </div>
+      <div class="subpanel active" id="women-hats-caps"></div>
+      <div class="subpanel" id="women-hats-beanies"></div>
+      <div class="subpanel" id="women-hats-bucket"></div>
     </div>
-    <div class="subpanel active" id="underwear-boxers"></div>
-    <div class="subpanel" id="underwear-briefs"></div>
-    <div class="subpanel" id="underwear-socks"></div>
+    <div class="tab-panel" id="panel-women-jackets">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('women-jackets','puffer',this)">🫧 Пуховики</button>
+        <button class="subtab" onclick="switchSub('women-jackets','bomber',this)">✈️ Бомберы</button>
+        <button class="subtab" onclick="switchSub('women-jackets','windbreaker',this)">💨 Ветровки</button>
+        <button class="subtab" onclick="switchSub('women-jackets','hoodie',this)">👕 Худи</button>
+      </div>
+      <div class="subpanel active" id="women-jackets-puffer"></div>
+      <div class="subpanel" id="women-jackets-bomber"></div>
+      <div class="subpanel" id="women-jackets-windbreaker"></div>
+      <div class="subpanel" id="women-jackets-hoodie"></div>
+    </div>
+    <div class="tab-panel" id="panel-women-underwear">
+      <div class="subtabs">
+        <button class="subtab active" onclick="switchSub('women-underwear','briefs',this)">🩲 Трусы</button>
+        <button class="subtab" onclick="switchSub('women-underwear','bra',this)">👙 Бюстгальтеры</button>
+        <button class="subtab" onclick="switchSub('women-underwear','socks',this)">🧦 Носки</button>
+      </div>
+      <div class="subpanel active" id="women-underwear-briefs"></div>
+      <div class="subpanel" id="women-underwear-bra"></div>
+      <div class="subpanel" id="women-underwear-socks"></div>
+    </div>
   </div>
 </div>
 
@@ -331,25 +403,45 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 <script>
 // ============ ДАННЫЕ ============
 const CATALOG = {
-  'shoes-sneakers':{label:'Кроссовки',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','New Balance 574','Adidas Samba OG','Adidas Campus'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
-  'shoes-boots':{label:'Ботинки',models:['Nike Boots','Timberland 6-Inch','UGG Classic','Dr. Martens 1460','Adidas Terrex'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
-  'shoes-sandals':{label:'Сандалии',models:['Nike Victori One','Adidas Adilette','Yeezy Slide','Jordan Hydro'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
-  'shoes-loafers':{label:'Лоферы',models:['Nike Blazer','New Balance Loafer','Gucci Loafer'],sizes:['36','37','38','39','40','41','42','43','44','45','46'],sizeType:'eu'},
-  'pants-sport':{label:'Спортивные штаны',models:['Nike Tech Fleece','Nike Jogger','Adidas Track Pants','Jordan Fleece Pants','New Balance Sweatpants'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'pants-jeans':{label:'Джинсы',models:["Levi's 501","Levi's 511",'Carhartt WIP Jeans','Wrangler Regular'],sizes:['28','29','30','31','32','33','34','36','38'],sizeType:'jeans'},
-  'pants-cargo':{label:'Карго',models:['Nike Cargo','Carhartt Cargo','New Balance Cargo','Dickies Cargo'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'pants-shorts':{label:'Шорты',models:['Nike Shorts','Jordan Shorts','Adidas Shorts','New Balance Shorts'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
-  'hats-caps':{label:'Кепки',models:['Nike Swoosh Cap','Jordan Jumpman Cap','Adidas Cap','New Balance Cap'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
-  'hats-beanies':{label:'Шапки',models:['Nike Beanie','Jordan Beanie','Adidas Beanie','New Balance Beanie'],sizes:['One Size'],sizeType:'hat'},
-  'hats-bucket':{label:'Панамы',models:['Nike Bucket Hat','Adidas Bucket Hat','Carhartt Bucket'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
-  'hats-bandana':{label:'Банданы',models:['Nike Bandana','Jordan Bandana','Supreme Bandana'],sizes:['One Size'],sizeType:'hat'},
-  'jackets-puffer':{label:'Пуховики',models:['Nike Puffer','Jordan Puffer','Adidas Puffer','New Balance Puffer'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'jackets-bomber':{label:'Бомберы',models:['Nike Bomber','Jordan Bomber','Adidas Bomber','Alpha Industries MA-1'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'jackets-windbreaker':{label:'Ветровки',models:['Nike Windrunner','Adidas Windbreaker','New Balance Wind Jacket','Jordan Windbreaker'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'jackets-hoodie':{label:'Худи',models:['Nike Tech Fleece Hoodie','Jordan Hoodie','Adidas Hoodie','New Balance Hoodie'],sizes:['XS','S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
-  'underwear-boxers':{label:'Боксеры',models:['Nike Boxers','Jordan Boxers','Adidas Boxers'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
-  'underwear-briefs':{label:'Брифы',models:['Nike Briefs','Adidas Briefs'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
-  'underwear-socks':{label:'Носки',models:['Nike Crew Socks','Nike Ankle Socks','Jordan Socks','Adidas Socks'],sizes:['S (36-38)','M (39-42)','L (43-46)'],sizeType:'socks'},
+  // МУЖСКОЙ
+  'men-shoes-sneakers':{label:'Кроссовки (М)',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','New Balance 574','Adidas Samba OG','Adidas Campus'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'men-shoes-boots':{label:'Ботинки (М)',models:['Timberland 6-Inch','Dr. Martens 1460','Nike Boots','Adidas Terrex'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'men-shoes-sandals':{label:'Сандалии (М)',models:['Nike Victori One','Adidas Adilette','Yeezy Slide','Jordan Hydro'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'men-shoes-loafers':{label:'Лоферы (М)',models:['Nike Blazer','New Balance Loafer'],sizes:['39','40','41','42','43','44','45','46'],sizeType:'eu'},
+  'men-pants-sport':{label:'Спортивные штаны (М)',models:['Nike Tech Fleece','Nike Jogger','Adidas Track Pants','Jordan Fleece Pants'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-pants-jeans':{label:'Джинсы (М)',models:["Levi's 501","Levi's 511",'Carhartt WIP','Wrangler'],sizes:['28','29','30','31','32','33','34','36','38'],sizeType:'jeans'},
+  'men-pants-cargo':{label:'Карго (М)',models:['Nike Cargo','Carhartt Cargo','Dickies Cargo'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-pants-shorts':{label:'Шорты (М)',models:['Nike Shorts','Jordan Shorts','Adidas Shorts'],sizes:['S','M','L','XL','XXL'],sizeType:'cloth'},
+  'men-hats-caps':{label:'Кепки (М)',models:['Nike Swoosh Cap','Jordan Cap','Adidas Cap','New Balance Cap'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'men-hats-beanies':{label:'Шапки (М)',models:['Nike Beanie','Jordan Beanie','Adidas Beanie'],sizes:['One Size'],sizeType:'hat'},
+  'men-hats-bucket':{label:'Панамы (М)',models:['Nike Bucket Hat','Adidas Bucket','Carhartt Bucket'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'men-hats-bandana':{label:'Банданы (М)',models:['Nike Bandana','Jordan Bandana'],sizes:['One Size'],sizeType:'hat'},
+  'men-jackets-puffer':{label:'Пуховики (М)',models:['Nike Puffer','Jordan Puffer','Adidas Puffer'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-jackets-bomber':{label:'Бомберы (М)',models:['Nike Bomber','Jordan Bomber','Alpha Industries MA-1'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-jackets-windbreaker':{label:'Ветровки (М)',models:['Nike Windrunner','Adidas Windbreaker','Jordan Windbreaker'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-jackets-hoodie':{label:'Худи (М)',models:['Nike Tech Fleece Hoodie','Jordan Hoodie','Adidas Hoodie'],sizes:['S','M','L','XL','XXL','3XL'],sizeType:'cloth'},
+  'men-underwear-boxers':{label:'Боксеры (М)',models:['Nike Boxers','Jordan Boxers','Adidas Boxers'],sizes:['S','M','L','XL','XXL'],sizeType:'cloth'},
+  'men-underwear-briefs':{label:'Брифы (М)',models:['Nike Briefs','Adidas Briefs'],sizes:['S','M','L','XL','XXL'],sizeType:'cloth'},
+  'men-underwear-socks':{label:'Носки (М)',models:['Nike Crew Socks','Nike Ankle Socks','Jordan Socks'],sizes:['S (39-42)','L (43-46)'],sizeType:'socks'},
+  // ЖЕНСКИЙ
+  'women-shoes-sneakers':{label:'Кроссовки (Ж)',models:['Nike Air Max 90','Nike Air Force 1','Nike Dunk Low','New Balance 550','Adidas Samba OG','Adidas Stan Smith'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
+  'women-shoes-boots':{label:'Ботинки (Ж)',models:['UGG Classic','Dr. Martens 1460','Nike Boots','Timberland'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
+  'women-shoes-sandals':{label:'Сандалии (Ж)',models:['Nike Victori One','Adidas Adilette','Yeezy Slide'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
+  'women-shoes-loafers':{label:'Лоферы (Ж)',models:['Nike Blazer','New Balance Loafer','Adidas Loafer'],sizes:['35','36','37','38','39','40','41'],sizeType:'eu'},
+  'women-pants-sport':{label:'Спортивные штаны (Ж)',models:['Nike Tech Fleece W','Nike Jogger W','Adidas Track Pants W','Jordan Fleece W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-pants-leggings':{label:'Леггинсы',models:['Nike One Leggings','Nike Pro Leggings','Adidas Leggings','Jordan Leggings'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-pants-jeans':{label:'Джинсы (Ж)',models:["Levi's 501 W","Levi's 711 Skinny",'Carhartt WIP W'],sizes:['24','25','26','27','28','29','30','32'],sizeType:'jeans'},
+  'women-pants-shorts':{label:'Шорты (Ж)',models:['Nike Shorts W','Jordan Shorts W','Adidas Shorts W'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
+  'women-hats-caps':{label:'Кепки (Ж)',models:['Nike Swoosh Cap','Adidas Cap W','New Balance Cap W'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'women-hats-beanies':{label:'Шапки (Ж)',models:['Nike Beanie W','Adidas Beanie W'],sizes:['One Size'],sizeType:'hat'},
+  'women-hats-bucket':{label:'Панамы (Ж)',models:['Nike Bucket W','Adidas Bucket W','New Balance Bucket W'],sizes:['S/M','L/XL','One Size'],sizeType:'hat'},
+  'women-jackets-puffer':{label:'Пуховики (Ж)',models:['Nike Puffer W','Jordan Puffer W','Adidas Puffer W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-jackets-bomber':{label:'Бомберы (Ж)',models:['Nike Bomber W','Jordan Bomber W','Adidas Bomber W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-jackets-windbreaker':{label:'Ветровки (Ж)',models:['Nike Windrunner W','Adidas Windbreaker W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-jackets-hoodie':{label:'Худи (Ж)',models:['Nike Tech Fleece Hoodie W','Jordan Hoodie W','Adidas Hoodie W'],sizes:['XS','S','M','L','XL','XXL'],sizeType:'cloth'},
+  'women-underwear-briefs':{label:'Трусы',models:['Nike Briefs W','Adidas Briefs W'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
+  'women-underwear-bra':{label:'Бюстгальтеры',models:['Nike Sport Bra','Nike Dri-FIT Bra','Adidas Sport Bra'],sizes:['XS','S','M','L','XL'],sizeType:'cloth'},
+  'women-underwear-socks':{label:'Носки (Ж)',models:['Nike Crew Socks W','Nike Ankle Socks W','Adidas Socks W'],sizes:['S (35-38)','M (39-41)'],sizeType:'socks'},
 };
 
 const SIZE_GUIDES = {
@@ -527,9 +619,19 @@ function applyCustomColor(id,hex){
   const btn=document.getElementById(`${id}-custom-btn`);
   btn.classList.add('active');btn.dataset.color=hex;btn.querySelector('.col-dot').style.background=hex;
 }
+function switchDept(dept, el){
+  document.querySelectorAll('.tabs button[onclick^="switchDept"]').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('dept-men').style.display = dept==='men'?'block':'none';
+  document.getElementById('dept-women').style.display = dept==='women'?'block':'none';
+  const firstId = dept==='men' ? 'men-shoes-sneakers' : 'women-shoes-sneakers';
+  buildForm(firstId);
+}
+
 function switchTab(cat,el){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const dept = cat.startsWith('women') ? 'women' : 'men';
+  document.querySelectorAll(`#dept-${dept} .tab`).forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll(`#dept-${dept} .tab-panel`).forEach(p=>p.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('panel-'+cat).classList.add('active');
   const first=document.querySelector(`#panel-${cat} .subpanel.active`);
@@ -544,7 +646,7 @@ function switchSub(cat,sub,el){
   buildForm(`${cat}-${sub}`);
 }
 
-buildForm('shoes-sneakers');
+buildForm('men-shoes-sneakers');
 </script>
 </body>
 </html>
