@@ -1,13 +1,7 @@
 window.TG_TOKEN = '8639881516:AAF6IT_2kI2XvYf8h8NGhb__QkDie9Ghhpc';
-window.TG_CHAT = '8639881516';
+window.TG_CHAT = '6975821575';
 ```
 
-Нажмите **Commit changes**.
-
----
-
-### Шаг 2 — Добавьте `.gitignore`
-
-Создайте файл **`.gitignore`** и вставьте:
+Затем проверьте — откройте в браузере:
 ```
-config.js
+https://api.telegram.org/bot8639881516:AAF6IT_2kI2XvYf8h8NGhb__QkDie9Ghhpc/sendMessage?chat_id=6975821575&text=Тест
