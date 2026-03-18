@@ -299,6 +299,10 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
         <label>АДРЕС ПУНКТА ВЫДАЧИ</label>
         <input type="text" id="global-pvz" placeholder="Вставьте адрес после выбора пункта..."/>
       </div>
+      <div class="delivery-field">
+        <label>НОМЕР ТЕЛЕФОНА</label>
+        <input type="tel" id="global-phone" placeholder="+7 (___) ___-__-__"/>
+      </div>
       <button class="cart-send-full" id="cart-send-btn" onclick="sendCartOrder()">📨 Отправить заказ</button>
     </div>
   </div>
@@ -738,9 +742,11 @@ function sendCartOrder() {
   var name = document.getElementById('global-name').value.trim();
   var city = document.getElementById('global-city').value.trim();
   var pvz = document.getElementById('global-pvz').value.trim();
-  if(!name){ alert('Введите ваше имя вверху страницы!'); document.getElementById('global-name').focus(); return; }
+  var phone = document.getElementById('global-phone').value.trim();
+  if(!name){ alert('Введите ваше имя!'); document.getElementById('global-name').focus(); return; }
+  if(!phone){ alert('Введите номер телефона!'); document.getElementById('global-phone').focus(); return; }
   var totalOrder = cart.reduce(function(s,i){ return s + (i.totalPrice||0); }, 0);
-  var msg = '🛒 <b>Новый заказ JaFAD!</b>\n\n👤 Имя: <b>' + name + '</b>';
+  var msg = '🛒 <b>Новый заказ JaFAD!</b>\n\n👤 Имя: <b>' + name + '</b>\n📞 Телефон: <b>' + phone + '</b>';
   if(city) msg += '\n📍 Город: ' + city;
   if(pvz) msg += '\n📦 Пункт выдачи: ' + pvz;
   msg += '\n\n━━━━━━━━━━━━━━━━\n';
