@@ -8,19 +8,16 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
 
-/* NAV */
 nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
 .logo{font-size:24px;font-weight:900;letter-spacing:-1px;}
 .logo span{color:#00FEFF;}
 .nav-links{display:flex;gap:32px;}
 .nav-links a{color:#888;text-decoration:none;font-size:14px;transition:color .2s;}
 .nav-links a:hover{color:#00FEFF;}
-.nav-btn{background:#00FEFF;color:#0d0d0d;font-size:13px;font-weight:700;padding:9px 22px;border-radius:24px;text-decoration:none;letter-spacing:1px;}
+.nav-btn{background:#00FEFF;color:#0d0d0d;font-size:13px;font-weight:700;padding:9px 22px;border-radius:24px;text-decoration:none;}
 
-/* HERO */
 .hero{background:#111;padding:80px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:#00FEFF;opacity:.03;}
-.hero::after{content:'';position:absolute;right:50px;top:50px;width:300px;height:300px;border-radius:50%;background:#00FEFF;opacity:.03;}
 .hero-left{flex:1;max-width:520px;}
 .hero-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:20px;}
 .hero-title{font-size:64px;font-weight:900;line-height:1.05;margin-bottom:20px;}
@@ -37,36 +34,33 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .hero-box-title{font-size:42px;font-weight:900;color:#00FEFF;opacity:.7;letter-spacing:4px;}
 .hero-box-sub{font-size:12px;color:#444;letter-spacing:3px;margin-top:8px;}
 
-/* SECTION */
 .section{padding:60px 40px;}
 .section-tag{font-size:11px;letter-spacing:4px;color:#00FEFF;margin-bottom:10px;}
 .section-title{font-size:28px;font-weight:700;margin-bottom:30px;}
 
-/* CATALOGUE */
-.catalogue{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
-.card{background:#111;border:1.5px solid #1e1e1e;border-radius:16px;overflow:hidden;transition:border-color .2s;}
-.card:hover{border-color:#00FEFF;}
-.card-img{background:#1a1a1a;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;}
-.card-img-inner{font-size:13px;color:#333;text-align:center;}
-.card-badge{position:absolute;top:12px;left:12px;background:#00FEFF;color:#0d0d0d;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;}
-.card-body{padding:18px;}
-.card-brand{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:4px;}
-.card-name{font-size:15px;font-weight:700;margin-bottom:8px;}
-.card-label{font-size:11px;color:#555;margin-bottom:6px;letter-spacing:1px;}
-.card-colors{display:flex;gap:8px;margin-bottom:14px;}
-.color-btn{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .15s;}
-.color-btn.active{border-color:#00FEFF;}
-.card-sizes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.size-btn{padding:5px 11px;border-radius:8px;border:1px solid #2a2a2a;font-size:12px;font-weight:600;color:#666;cursor:pointer;background:transparent;transition:all .15s;}
-.size-btn:hover{border-color:#00FEFF;color:#00FEFF;}
-.size-btn.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
-.size-btn.na{color:#333;cursor:not-allowed;text-decoration:line-through;}
-.card-footer{display:flex;align-items:center;justify-content:space-between;}
-.card-price{font-size:20px;font-weight:900;}
-.card-price span{font-size:11px;color:#444;font-weight:400;margin-left:4px;}
-.order-btn{background:#00FEFF;color:#0d0d0d;border:none;border-radius:24px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;}
-.order-btn:hover{background:#00E5E6;}
+/* ORDER FORM */
+.order-section{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
+.order-card{background:#111;border:1px solid #1e1e1e;border-radius:20px;padding:40px;max-width:700px;margin:0 auto;}
+.field{margin-bottom:24px;}
+.field-label{font-size:12px;letter-spacing:2px;color:#00FEFF;margin-bottom:10px;display:block;}
+.field input,.field select,.field textarea{width:100%;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;outline:none;transition:border-color .2s;font-family:Arial,sans-serif;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#00FEFF;}
+.field select option{background:#111;}
+.field textarea{resize:vertical;min-height:80px;}
+.sizes-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.sz{padding:10px 16px;border-radius:10px;border:1px solid #2a2a2a;font-size:13px;font-weight:700;color:#666;cursor:pointer;background:transparent;transition:all .15s;}
+.sz:hover{border-color:#00FEFF;color:#00FEFF;}
+.sz.active{background:#00FEFF;color:#0d0d0d;border-color:#00FEFF;}
+.colors-row{display:flex;flex-wrap:wrap;gap:10px;}
+.col-btn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;border:1px solid #2a2a2a;cursor:pointer;background:transparent;color:#888;font-size:13px;transition:all .15s;}
+.col-btn:hover{border-color:#00FEFF;color:#fff;}
+.col-btn.active{border-color:#00FEFF;color:#fff;background:#1a1a1a;}
+.col-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;}
+.submit-btn{width:100%;background:#00FEFF;color:#0d0d0d;border:none;border-radius:28px;padding:18px;font-size:16px;font-weight:900;cursor:pointer;letter-spacing:1px;margin-top:8px;transition:background .2s;}
+.submit-btn:hover{background:#00E5E6;}
+.success{display:none;background:#0a2a1a;border:1px solid #00FEFF;border-radius:12px;padding:20px;text-align:center;margin-top:20px;}
+.success p{color:#00FEFF;font-size:15px;font-weight:700;}
+.success span{color:#555;font-size:13px;}
 
 /* ABOUT */
 .about{background:#111;border-bottom:1px solid #1a1a1a;}
@@ -78,7 +72,6 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .stat-num{font-size:28px;font-weight:900;color:#00FEFF;}
 .stat-label{font-size:11px;color:#555;margin-top:4px;letter-spacing:1px;}
 
-/* HOW */
 .how{background:#0d0d0d;border-bottom:1px solid #1a1a1a;}
 .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
 .step{background:#111;border:1px solid #1e1e1e;border-radius:14px;padding:24px;}
@@ -86,45 +79,39 @@ nav{background:#111;border-bottom:1px solid #1e1e1e;padding:0 40px;display:flex;
 .step-title{font-size:15px;font-weight:700;margin-bottom:8px;}
 .step-desc{font-size:13px;color:#555;line-height:1.7;}
 
-/* CONTACTS */
 .contacts{background:#111;border-bottom:1px solid #1a1a1a;}
 .contact-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
 .tg-btn{background:#00FEFF;color:#0d0d0d;font-weight:700;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
 .wa-btn{border:1px solid #333;color:#aaa;font-size:15px;padding:16px 36px;border-radius:32px;text-decoration:none;display:inline-block;}
 
-/* FOOTER */
 footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .footer-logo{font-size:18px;font-weight:900;}
 .footer-logo span{color:#00FEFF;}
 .footer-copy{font-size:12px;color:#444;}
 .footer-tag{font-size:12px;color:#333;}
-
-/* DIVIDER */
 .divider{height:1px;background:linear-gradient(to right,transparent,#00FEFF44,transparent);margin:0 40px;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">Ja<span>FAD</span></div>
   <div class="nav-links">
-    <a href="#catalogue">Каталог</a>
+    <a href="#order">Заказать</a>
     <a href="#about">О нас</a>
     <a href="#contacts">Контакты</a>
   </div>
-  <a href="#contacts" class="nav-btn">ЗАКАЗАТЬ</a>
+  <a href="#order" class="nav-btn">ЗАКАЗАТЬ</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-tag">POIZON DELIVERY</div>
     <div class="hero-title">Ja<span>FAD</span></div>
     <div class="hero-sub">Доставка оригинальных кроссовок<br>прямо с платформы Poizon</div>
     <div class="hero-btns">
-      <a href="#catalogue" class="btn-primary">Смотреть каталог</a>
-      <a href="#contacts" class="btn-secondary">Как заказать</a>
+      <a href="#order" class="btn-primary">Оформить заказ</a>
+      <a href="#about" class="btn-secondary">О нас</a>
     </div>
     <div class="hero-badges">
       <div class="badge-item"><div class="badge-dot"></div>Оригинал</div>
@@ -140,16 +127,84 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   </div>
 </div>
 
-<!-- CATALOGUE -->
-<div class="section catalogue" id="catalogue">
-  <div class="section-tag">КАТАЛОГ</div>
-  <div class="section-title">Популярные модели</div>
-  <div class="grid" id="grid"></div>
+<!-- ORDER FORM -->
+<div class="section order-section" id="order">
+  <div class="section-tag">ОФОРМИТЬ ЗАКАЗ</div>
+  <div class="section-title">Выберите параметры</div>
+  <div class="order-card">
+
+    <div class="field">
+      <label class="field-label">МОДЕЛЬ КРОССОВОК</label>
+      <select id="model">
+        <option value="">— Выберите модель —</option>
+        <option>Nike Air Max 90</option>
+        <option>Nike Air Force 1</option>
+        <option>Nike Dunk Low</option>
+        <option>New Balance 550</option>
+        <option>New Balance 574</option>
+        <option>Adidas Samba OG</option>
+        <option>Adidas Campus</option>
+        <option>Другая модель</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label class="field-label">ССЫЛКА С POIZON (необязательно)</label>
+      <input type="text" id="link" placeholder="https://poizon.com/..."/>
+    </div>
+
+    <div class="field">
+      <label class="field-label">ЦВЕТ</label>
+      <div class="colors-row" id="colors">
+        <button class="col-btn" data-color="White"><div class="col-dot" style="background:#f5f5f0;border:1px solid #444;"></div>White</button>
+        <button class="col-btn" data-color="Black"><div class="col-dot" style="background:#1a1a1a;border:1px solid #444;"></div>Black</button>
+        <button class="col-btn" data-color="Grey"><div class="col-dot" style="background:#888;"></div>Grey</button>
+        <button class="col-btn" data-color="Red"><div class="col-dot" style="background:#c0392b;"></div>Red</button>
+        <button class="col-btn" data-color="Blue"><div class="col-dot" style="background:#2980b9;"></div>Blue</button>
+        <button class="col-btn" data-color="Green"><div class="col-dot" style="background:#27ae60;"></div>Green</button>
+        <button class="col-btn" data-color="Cream"><div class="col-dot" style="background:#e8d5b0;border:1px solid #444;"></div>Cream</button>
+        <button class="col-btn" data-color="Brown"><div class="col-dot" style="background:#8B4513;"></div>Brown</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">РАЗМЕР (EU)</label>
+      <div class="sizes-grid" id="sizes">
+        <button class="sz" data-size="36">36</button>
+        <button class="sz" data-size="37">37</button>
+        <button class="sz" data-size="38">38</button>
+        <button class="sz" data-size="39">39</button>
+        <button class="sz" data-size="40">40</button>
+        <button class="sz" data-size="41">41</button>
+        <button class="sz" data-size="42">42</button>
+        <button class="sz" data-size="43">43</button>
+        <button class="sz" data-size="44">44</button>
+        <button class="sz" data-size="45">45</button>
+        <button class="sz" data-size="46">46</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">ВАШЕ ИМЯ</label>
+      <input type="text" id="name" placeholder="Как вас зовут?"/>
+    </div>
+
+    <div class="field">
+      <label class="field-label">КОММЕНТАРИЙ (необязательно)</label>
+      <textarea id="comment" placeholder="Любые пожелания..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">ОТПРАВИТЬ ЗАКАЗ В TELEGRAM</button>
+
+    <div class="success" id="success">
+      <p>Заказ отправлен! ✓</p>
+      <span>Мы свяжемся с вами в Telegram в ближайшее время</span>
+    </div>
+  </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ABOUT -->
 <div class="section about" id="about">
   <div class="section-tag">О НАС</div>
   <div class="about-inner">
@@ -166,18 +221,16 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   </div>
 </div>
 
-<!-- HOW -->
 <div class="section how" id="how">
   <div class="section-tag">КАК ЗАКАЗАТЬ</div>
   <div class="section-title">Три простых шага</div>
   <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">Напишите нам</div><div class="step-desc">Свяжитесь через Telegram или WhatsApp — отправим актуальный каталог с ценами</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Выберите модель</div><div class="step-desc">Выберите кроссовки, цвет и размер — оформим заказ на Poizon</div></div>
+    <div class="step"><div class="step-num">01</div><div class="step-title">Заполните форму</div><div class="step-desc">Выберите модель, цвет и размер — заполните форму выше</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Мы свяжемся</div><div class="step-desc">Напишем в Telegram, уточним детали и стоимость доставки</div></div>
     <div class="step"><div class="step-num">03</div><div class="step-title">Получите заказ</div><div class="step-desc">Доставим прямо к вам — быстро, надёжно, с гарантией оригинала</div></div>
   </div>
 </div>
 
-<!-- CONTACTS -->
 <div class="section contacts" id="contacts">
   <div class="section-tag">КОНТАКТЫ</div>
   <div class="section-title">Связаться с нами</div>
@@ -187,7 +240,6 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Ja<span>FAD</span></div>
   <div class="footer-copy">© 2026 JaFAD · Poizon Delivery</div>
@@ -195,41 +247,37 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:24px 40px;display:fl
 </footer>
 
 <script>
-const products=[
-  {name:'Nike Air Max 90',brand:'NIKE',colors:['#f5f5f0','#1a1a1a','#c0392b','#2980b9'],colorNames:['White','Black','Red','Blue'],sizes:['38','39','40','41','42','43','44','45'],na:['38','45'],prices:{White:13500,Black:14200,Red:12800,Blue:13100}},
-  {name:'New Balance 550',brand:'NEW BALANCE',colors:['#ffffff','#2c3e50','#27ae60','#e8d5b0'],colorNames:['White','Navy','Green','Cream'],sizes:['38','39','40','41','42','43','44'],na:['44'],prices:{White:9800,Navy:10200,Green:9500,Cream:10500}},
-  {name:'Adidas Samba OG',brand:'ADIDAS',colors:['#ffffff','#1a1a1a','#8B4513','#2c3e50'],colorNames:['White','Black','Brown','Navy'],sizes:['39','40','41','42','43','44','45'],na:['39'],prices:{White:11200,Black:11800,Brown:12100,Navy:11500}}
-];
-
-function buildCard(p,selColor,selSize){
-  return`<div class="card-img"><div class="card-img-inner">📦<br>фото товара</div><div class="card-badge">ORIGINAL</div></div>
-  <div class="card-body">
-    <div class="card-brand">${p.brand}</div>
-    <div class="card-name">${p.name}</div>
-    <div class="card-label">ЦВЕТ: ${selColor}</div>
-    <div class="card-colors">${p.colorNames.map((cn,i)=>`<div class="color-btn${cn===selColor?' active':''}" data-color="${cn}" style="background:${p.colors[i]};${p.colors[i]==='#ffffff'?'border-color:#333;':''}"></div>`).join('')}</div>
-    <div class="card-label">РАЗМЕР (EU)</div>
-    <div class="card-sizes">${p.sizes.map(s=>`<button class="size-btn${p.na.includes(s)?' na':''}${s===selSize?' active':''}" data-size="${s}"${p.na.includes(s)?' disabled':''}>${s}</button>`).join('')}</div>
-    <div class="card-footer">
-      <div class="card-price">${p.prices[selColor].toLocaleString()} ₽<span>Poizon</span></div>
-      <a href="https://t.me/AndreyI2009?text=Хочу заказать ${encodeURIComponent(p.name+' '+selColor+(selSize?' р.'+selSize:''))}" class="order-btn">Заказать</a>
-    </div>
-  </div>`;
-}
-
-function rebind(card,p){
-  card.querySelectorAll('.color-btn').forEach(b=>b.onclick=()=>{card.dataset.color=b.dataset.color;card.innerHTML=buildCard(p,b.dataset.color,card.dataset.size||null);rebind(card,p);});
-  card.querySelectorAll('.size-btn:not(.na)').forEach(b=>b.onclick=()=>{card.dataset.size=b.dataset.size;card.innerHTML=buildCard(p,card.dataset.color||p.colorNames[0],b.dataset.size);rebind(card,p);});
-}
-
-const g=document.getElementById('grid');
-products.forEach(p=>{
-  const card=document.createElement('div');
-  card.className='card';
-  card.innerHTML=buildCard(p,p.colorNames[0],null);
-  g.appendChild(card);
-  rebind(card,p);
+document.querySelectorAll('.sz').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.sz').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  };
 });
+document.querySelectorAll('.col-btn').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.col-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  };
+});
+
+function submitOrder(){
+  const model=document.getElementById('model').value;
+  const link=document.getElementById('link').value;
+  const name=document.getElementById('name').value;
+  const comment=document.getElementById('comment').value;
+  const size=document.querySelector('.sz.active')?.dataset.size||'не выбран';
+  const color=document.querySelector('.col-btn.active')?.dataset.color||'не выбран';
+
+  if(!model){alert('Пожалуйста, выберите модель!');return;}
+  if(!name){alert('Пожалуйста, введите ваше имя!');return;}
+
+  let msg=`Новый заказ JaFAD!\n\nМодель: ${model}\nЦвет: ${color}\nРазмер: ${size}\nИмя: ${name}`;
+  if(link) msg+=`\nСсылка: ${link}`;
+  if(comment) msg+=`\nКомментарий: ${comment}`;
+
+  window.open(`https://t.me/AndreyI2009?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('success').style.display='block';
+}
 </script>
 </body>
 </html>
