@@ -1,12 +1,12 @@
 exports.handler = async function() {
   try {
-    const r = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/cny.json');
+    const r = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/rub.json');
     const d = await r.json();
-    const rate = d.cny && d.cny.rub ? d.cny.rub : 11.54;
+    const rubPerCny = d.rub && d.rub.cny ? Math.round((1 / d.rub.cny) * 100) / 100 : 11.54;
     return {
       statusCode: 200,
       headers: {'Access-Control-Allow-Origin': '*'},
-      body: JSON.stringify({rate: Math.round(rate * 100) / 100})
+      body: JSON.stringify({rate: rubPerCny})
     };
   } catch(e) {
     return {
