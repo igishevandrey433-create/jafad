@@ -194,9 +194,9 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 <nav>
   <div class="logo">Ja<span>FAD</span></div>
   <div class="nav-links">
-    <a href="#order" onclick="event.preventDefault();scrollTo('order');">Заказать</a>
-    <a href="#about" onclick="event.preventDefault();scrollTo('about');">О нас</a>
-    <a href="#contacts" onclick="event.preventDefault();scrollTo('contacts');">Контакты</a>
+    <a href="#order" onclick="event.preventDefault();document.getElementById('order').scrollIntoView({behavior:'smooth'});">Заказать</a>
+    <a href="#about" onclick="event.preventDefault();document.getElementById('about').scrollIntoView({behavior:'smooth'});">О нас</a>
+    <a href="#contacts" onclick="event.preventDefault();document.getElementById('contacts').scrollIntoView({behavior:'smooth'});">Контакты</a>
   </div>
   <div class="nav-right">
     <div class="rate-badge">
@@ -261,8 +261,8 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
     <div class="hero-title">Ja<span>FAD</span></div>
     <div class="hero-sub">Доставка оригинальных товаров<br>прямо с платформы Poizon</div>
     <div class="hero-btns">
-      <a href="#order" class="btn-primary" onclick="event.preventDefault();scrollTo('order');">Оформить заказ</a>
-      <a href="#about" class="btn-secondary" onclick="event.preventDefault();scrollTo('about');">О нас</a>
+      <a href="#order" class="btn-primary" onclick="event.preventDefault();document.getElementById('order').scrollIntoView({behavior:'smooth'});">Оформить заказ</a>
+      <a href="#about" class="btn-secondary" onclick="event.preventDefault();document.getElementById('about').scrollIntoView({behavior:'smooth'});">О нас</a>
     </div>
     <div class="hero-badges">
       <div class="badge-item"><div class="badge-dot"></div>Оригинал</div>
@@ -464,12 +464,7 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 </footer>
 
 <script>
-function scrollTo(id){
-  var el = document.getElementById(id);
-  if(!el) return;
-  var y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-  window.scrollTo({top: y, behavior: 'smooth'});
-}
+// ===== ЗАЩИТА ОТ КОПИРОВАНИЯ =====
 document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
 document.addEventListener('keydown', function(e){
   if((e.ctrlKey||e.metaKey) && (e.key==='u'||e.key==='s'||e.key==='a')) e.preventDefault();
