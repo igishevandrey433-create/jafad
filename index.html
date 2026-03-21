@@ -464,7 +464,15 @@ footer{background:#111;border-top:1px solid #1e1e1e;padding:22px 40px;display:fl
 </footer>
 
 <script>
-// ===== TELEGRAM =====
+// ===== ЗАЩИТА ОТ КОПИРОВАНИЯ =====
+document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+document.addEventListener('keydown', function(e){
+  if((e.ctrlKey||e.metaKey) && (e.key==='u'||e.key==='s'||e.key==='a')) e.preventDefault();
+  if(e.key==='F12') e.preventDefault();
+});
+document.addEventListener('selectstart', function(e){ e.preventDefault(); });
+document.body.style.userSelect='none';
+document.body.style.webkitUserSelect='none';
 var TG_TOKEN = '8639881516:AAF6IT_2kI2XvYf8h8NGhb__QkDie9Ghhpc';
 var TG_CHAT = '6975821575';
 
